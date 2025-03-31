@@ -24,21 +24,21 @@ public class PlayerController : MonoBehaviour
         
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) 
         {
-           if(this.gameObject.transform.position.x <= limitLeft) 
-            {
+           //if(this.gameObject.transform.position.x <= limitLeft) 
+           // {
                 transform.Translate(Vector3.left * Time.deltaTime * horizontalSpeed);
 
-            }
+            //}
            
         
         }
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) 
         {
-            if (this.gameObject.transform.position.x >= limitRight) 
-            { 
+           // if (this.gameObject.transform.position.x >= limitRight) 
+            //{ 
             
                 transform.Translate(Vector3.left * Time.deltaTime * horizontalSpeed * -1);
-            }
+           // }
 
                 
 
