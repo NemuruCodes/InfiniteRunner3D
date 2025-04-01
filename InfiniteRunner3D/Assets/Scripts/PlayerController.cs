@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 
 public class PlayerController : MonoBehaviour
 {
-    public float playerSpeed = 2;
+    public float playerSpeed = 3;
     //public float horizontalSpeed = 3;
     float _move;
     //public float limitLeft = 5.5f;
