@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class PlayerController : MonoBehaviour
     //public float limitRight = -5.5f;
     private bool laneChange = false;
 
+    private bool canJump = true;
+
+    private bool isAlive = true;
+
     void Start()
     {
         GetComponent<Rigidbody>().linearVelocity = new Vector3(0, 0, 5);
@@ -20,11 +25,15 @@ public class PlayerController : MonoBehaviour
    
     void Update()
     {
-        
-        //transform.Translate(Vector3.forward * Time.deltaTime * playerSpeed, Space.World); //delta time is relative to game speed
+        /*
+        if (isAlive)
+        {
+            transform.Translate(Vector3.forward * Time.deltaTime * playerSpeed, Space.World); //delta time is relative to game speed
+        }
+        */
 
         
-        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && (laneChange == false) && (transform.position.x > -2))
+        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && (laneChange == false) && (transform.position.x > -2) && (canJump == false))
         {
             //if(this.gameObject.transform.position.x <= limitLeft) 
             // {
@@ -36,8 +45,8 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(stopLaneChange());
         
         }
-        if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && (laneChange == false) && (transform.position.x < 2))
-        {
+        if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && (laneChange == false) && (transform.position.x < 2) && (canJump == false))
+        {// temp canJump to stop glitch
             // if (this.gameObject.transform.position.x >= limitRight) 
             //{ 
 
@@ -48,11 +57,8 @@ public class PlayerController : MonoBehaviour
             laneChange = true;
             StartCoroutine(stopLaneChange());
         }
-        if (Input.GetKey(KeyCode.Space)) 
-        { 
-        
-        
-        }
+
+        Jump();
         /*
 
         if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
@@ -87,5 +93,46 @@ public class PlayerController : MonoBehaviour
 
         laneChange = false;
 
+    }
+    IEnumerator stopJump() 
+    {
+        yield return new WaitForSeconds(0.75f);
+        GetComponent<Rigidbody>().linearVelocity = new Vector3(0, -4, 5);
+        yield return new WaitForSeconds(0.75f);
+        GetComponent<Rigidbody>().linearVelocity = new Vector3(0, 0, 5);
+        canJump = true;
+    }
+
+    void Jump() 
+    { 
+        if (isAlive == true && canJump == true && Input.GetKey(KeyCode.Space) && (laneChange == false)) //temp lanChange will swap vector numbers with variables
+        {
+            
+            
+                GetComponent<Rigidbody>().linearVelocity = new Vector3(0, 4, 5);
+                //Debug.Log("No Jump");
+                canJump = false;
+                
+                StartCoroutine(stopJump());
+
+        }
+    
+    
+    }
+    public void OnCollisionEnter(Collision collision)
+    {
+        /*
+        if(collision.gameObject.tag == "Ground")
+        {
+            Debug.Log("Jumpie");
+            canJump = true;
+        }
+        */
+        if (collision.gameObject.tag == "Obstacle") 
+        {
+            Debug.Log("Hit");
+            isAlive = false;
+        
+        }
     }
 }
