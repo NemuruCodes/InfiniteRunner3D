@@ -16,9 +16,14 @@ public class GameManager : MonoBehaviour
     public Transform scaffholdingObj;
     private Vector3 spawnNextScaff;
 
+    public Transform Enemy;
+    private Vector3 spawnNextEnemy;
+
     //private int rand_x;
 
     private float[] lanes = { -3f, 0f, 3f };
+
+    private int randChoice;
 
     void Start()
     {
@@ -40,7 +45,7 @@ public class GameManager : MonoBehaviour
         spawnNextCrates = spawnNextTile;
         //spawnNextCrates.x = rand_x;
         spawnNextCrates.x = randomLane;
-        spawnNextCrates.y = 3.2f;
+        spawnNextCrates.y = 3.1f;
 
         Instantiate(tileObject, spawnNextTile, tileObject.rotation);
         Instantiate(cratesObj, spawnNextCrates, cratesObj.rotation);
@@ -51,12 +56,13 @@ public class GameManager : MonoBehaviour
         //rand_x = Random.Range(-3, 3);
         randomLane = lanes[Random.Range(0, lanes.Length)];
         spawnNextDebri.z = spawnNextTile.z;
-        spawnNextDebri.y = 0.5f;
+        spawnNextDebri.y = 3f;
         //spawnNextDebri.x = rand_x;
         spawnNextDebri.x = randomLane;
         Instantiate(tileObject, spawnNextTile, tileObject.rotation);
         Instantiate(debriObj, spawnNextDebri, debriObj.rotation);
 
+        
         if(randomLane == 0) 
         {
             randomLane = 3;
@@ -73,12 +79,26 @@ public class GameManager : MonoBehaviour
         
         
         }
+        randChoice = Random.Range(0, 2);
+        if (randChoice == 0) 
+        {
 
-        spawnNextScaff.z = spawnNextTile.z;
-        spawnNextScaff.y = 3f;
-        spawnNextScaff.x = randomLane;
-        //Instantiate(tileObject, spawnNextTile, tileObject.rotation);
-        Instantiate(scaffholdingObj, spawnNextScaff, scaffholdingObj.rotation);
+            spawnNextScaff.z = spawnNextTile.z;
+            spawnNextScaff.y = 3.1f;
+            spawnNextScaff.x = randomLane;
+            //Instantiate(tileObject, spawnNextTile, tileObject.rotation);
+            Instantiate(scaffholdingObj, spawnNextScaff, scaffholdingObj.rotation);
+
+
+        }
+        else 
+        {
+
+            spawnNextEnemy.z = spawnNextTile.z;
+            spawnNextEnemy.y = 3.1f;
+            spawnNextEnemy.x = randomLane;
+            Instantiate(Enemy, spawnNextEnemy, Enemy.rotation);
+        }
 
 
         spawnNextTile.z += 12;
