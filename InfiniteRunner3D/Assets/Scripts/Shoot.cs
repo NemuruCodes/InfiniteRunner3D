@@ -13,17 +13,18 @@ public class Shoot : MonoBehaviour
 
     private void Update()
     {
-        
+
         if (BulletChecked)
         {
             //Debug.Log("test3");
             Shoots();
-          
+
         }
 
         BulletChecked = false;
-       // Debug.Log("test");
+        // Debug.Log("test");
     }
+
 
     void Shoots()
     {
@@ -31,3 +32,4 @@ public class Shoot : MonoBehaviour
         bullet.GetComponent<Rigidbody>().AddForce(BulletSpawn.forward * BulletSpeed, ForceMode.Impulse);
     }
 }
+
