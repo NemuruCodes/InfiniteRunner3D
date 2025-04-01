@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public Transform Enemy;
     private Vector3 spawnNextEnemy;
 
+    
     //private int rand_x;
 
     private float[] lanes = { -3f, 0f, 3f };
