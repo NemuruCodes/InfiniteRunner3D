@@ -11,7 +11,7 @@ public class AnimationController : MonoBehaviour
 
     void Update()
     {
-        GetComponent<Animator>().Play("Run_gunMiddle_AR");
+        GetComponent<Animator>().Play("Run_guard_AR");
     }
 
 }
