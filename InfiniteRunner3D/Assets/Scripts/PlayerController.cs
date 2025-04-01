@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
         */
 
         
-        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && (laneChange == false) && (transform.position.x > -2))
+        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && (laneChange == false) && (transform.position.x > -2) && canJump == true)
         {
             //if(this.gameObject.transform.position.x <= limitLeft) 
             // {
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(stopLaneChange());
         
         }
-        if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && (laneChange == false) && (transform.position.x < 2))
+        if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && (laneChange == false) && (transform.position.x < 2) && canJump == true)
         {// temp canJump to stop glitch
             // if (this.gameObject.transform.position.x >= limitRight) 
             //{ 
