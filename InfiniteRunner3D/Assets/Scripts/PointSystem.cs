@@ -10,11 +10,13 @@ public class PointSystem : MonoBehaviour
 {
     [SerializeField] private GameObject scoreDisplay;
 
+
     TextMeshProUGUI valText;
     void Start()
     {
         valText = scoreDisplay.GetComponent<TextMeshProUGUI>();
         valText.text = PointManager.Instance.value.ToString();
+
 
     }
 
@@ -22,5 +24,8 @@ public class PointSystem : MonoBehaviour
     void Update()
     {
         valText.text = PointManager.Instance.value.ToString();
+
     }
+
+    
 }
