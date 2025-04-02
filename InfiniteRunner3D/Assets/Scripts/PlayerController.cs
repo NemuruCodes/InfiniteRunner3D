@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 public class PlayerController : MonoBehaviour
 {
     public float playerSpeed = 2;
+    public  int JumpEffect { get; set; }
     //public float horizontalSpeed = 3;
     float _move;
     //public float limitLeft = 5.5f;
@@ -15,6 +16,10 @@ public class PlayerController : MonoBehaviour
     private bool canJump = true;
 
     private bool isAlive = true;
+
+   // public int JumpEffect = 1;
+
+    
 
     void Start()
     {
@@ -97,19 +102,21 @@ public class PlayerController : MonoBehaviour
     IEnumerator stopJump() 
     {
         yield return new WaitForSeconds(0.75f);
-        GetComponent<Rigidbody>().linearVelocity = new Vector3(0, -4, 5);
+        GetComponent<Rigidbody>().linearVelocity = new Vector3(0, -4 * JumpEffect, 5);
         yield return new WaitForSeconds(0.75f);
         GetComponent<Rigidbody>().linearVelocity = new Vector3(0, 0, 5);
         canJump = true;
+        //PickUpManager.canJump = false;
+
     }
 
     void Jump() 
     { 
         if (isAlive == true && canJump == true && Input.GetKey(KeyCode.Space) && (laneChange == false)) //temp lanChange will swap vector numbers with variables
         {
-            
-            
-                GetComponent<Rigidbody>().linearVelocity = new Vector3(0, 4, 5);
+
+            //PickUpManager.canJump = true;
+            GetComponent<Rigidbody>().linearVelocity = new Vector3(0, 4 * JumpEffect, 5);
                 //Debug.Log("No Jump");
                 canJump = false;
                 

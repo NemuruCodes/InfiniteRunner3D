@@ -19,7 +19,10 @@ public class GameManager : MonoBehaviour
     public Transform Enemy;
     private Vector3 spawnNextEnemy;
 
-    
+    public Transform PickUp;
+    private Vector3 spawnNextPickup;
+
+
     //private int rand_x;
 
     private float[] lanes = { -3f, 0f, 3f };
@@ -30,6 +33,8 @@ public class GameManager : MonoBehaviour
     {
         spawnNextTile.z = 96;
         StartCoroutine(spawnTile());
+        GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<PlayerController>().JumpEffect = 1;
+        //PickUpManager.canJump = true;
     }
 
     void Update()
@@ -102,7 +107,31 @@ public class GameManager : MonoBehaviour
         }
 
 
+        randomLane = lanes[Random.Range(0, lanes.Length)];
+         if(randomLane == 0) 
+        {
+            randomLane = -3;
+        
+        }
+        else if (randomLane == 3) 
+        {
+            randomLane = 0;
+        
+        }
+        else if (randomLane == -3) 
+        {
+            randomLane = 3;
+        
+        
+        }
+        spawnNextPickup.z = spawnNextTile.z;
+        spawnNextPickup.y = 3.1f;
+        spawnNextPickup.x = randomLane;
+        Instantiate(PickUp, spawnNextPickup,PickUp.rotation);
+
         spawnNextTile.z += 12;
         StartCoroutine(spawnTile());
+
+
     }
 }
