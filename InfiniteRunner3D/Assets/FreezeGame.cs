@@ -12,13 +12,15 @@ public class FreezeGame : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            Time.timeScale = 0;
+            
 
             EndMenu.SetActive(true);
 
             TextUI.transform.position = Vector3.Lerp(TextUI.transform.position, targetPosition, speed * 1);
 
             Score.SetActive(false);
+
+            Time.timeScale = 0;
         }
 
      

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 923617431639361946}
   - component: {fileID: 2992605113973493630}
   - component: {fileID: 6006542399394843114}
+  - component: {fileID: -6851334062100283206}
   m_Layer: 0
   m_Name: PointBuff
   m_TagString: PickUp
@@ -119,5 +120,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62c9f7a01b6a9d74dbd407286fe19d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-6851334062100283206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4566742192850814780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3983b075f6456ee459fbfd2ba91aab08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     //private int rand_x;
 
-    private float[] lanes = { -3f, 0f, 3f };
+    private readonly float[] lanes = { -3f, 0f, 3f };
 
     private int randChoice;
 
@@ -63,9 +63,12 @@ public class GameManager : MonoBehaviour
         randomLane = lanes[Random.Range(0, lanes.Length)];
         spawnNextDebri.z = spawnNextTile.z;
         spawnNextDebri.y = 3f;
+
         //spawnNextDebri.x = rand_x;
         spawnNextDebri.x = randomLane;
         Instantiate(tileObject, spawnNextTile, tileObject.rotation);
+
+
         Instantiate(debriObj, spawnNextDebri, debriObj.rotation);
 
         

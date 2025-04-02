@@ -20,5 +20,13 @@ public class SectionDeload : MonoBehaviour
             Destroy(this.gameObject);
         
         }
+        /*
+        if (collision.gameObject.CompareTag("PickUp"))
+        {
+            Destroy(this.gameObject);
+
+        }
+        */
     }
+  
 }
