@@ -5,6 +5,17 @@ using Unity.VisualScripting;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Lane Settings")]
+    public float laneDistance = 3.0f;
+    public float laneSwitchSpeed = 10.0f;
+    
+    private int currLaneIndex = 1;
+
+    private float[] lanePosition = new float[] { -3f, 0f, 3f };
+
+    private Vector3 targetPos;
+
+
     public float playerSpeed = 2;
 
     public float laneSwapSpeed = 2;
@@ -14,8 +25,7 @@ public class PlayerController : MonoBehaviour
     //public float limitLeft = 5.5f;
     //public float limitRight = -5.5f;
 
-    public Transform[] lanes;
-    int currentLane = 0;
+    
 
     private bool laneChange = false;
 
@@ -23,14 +33,15 @@ public class PlayerController : MonoBehaviour
 
     private bool isAlive = true;
 
-   // public int JumpEffect = 1;
+    // public int JumpEffect = 1;
 
+    
     
 
     void Start()
     {
         GetComponent<Rigidbody>().linearVelocity = new Vector3(0, 0, 5);
-
+        targetPos = new Vector3(lanePosition[currLaneIndex], transform.position.y, transform.position.z);
     }
 
    
@@ -42,45 +53,9 @@ public class PlayerController : MonoBehaviour
             transform.Translate(Vector3.forward * Time.deltaTime * playerSpeed, Space.World); //delta time is relative to game speed
         }
         */
+        HandleInput();
+        MoveToLane();
       
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            if (lanes.Length == 0) return;
-
-            Transform target = lanes[currentLane];
-
-            transform.position = Vector3.MoveTowards(
-                transform.position, target.position,
-                laneSwapSpeed * Time.deltaTime);
-
-            if (Vector3.Distance(transform.position, target.position) < 0.01f)
-            {
-                currentLane = (currentLane + 1) % lanes.Length;
-
-            }
-
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-
-            if (lanes.Length == 1) return;
-
-            Transform target = lanes[currentLane];
-
-            transform.position = Vector3.MoveTowards(
-                transform.position, target.position,
-                laneSwapSpeed * Time.deltaTime);
-
-            if (Vector3.Distance(transform.position, target.position) < 0.01f)
-            {
-                currentLane = (currentLane - 1) % lanes.Length;
-
-            }
-
-
-
-        }
         
         /*
         if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && (laneChange == false) && (transform.position.x > -2))
@@ -127,7 +102,7 @@ public class PlayerController : MonoBehaviour
         }
         */
     }
-
+    /*
     IEnumerator stopLaneChange() 
     {
         yield return new WaitForSeconds(1);
@@ -137,6 +112,7 @@ public class PlayerController : MonoBehaviour
         laneChange = false;
 
     }
+    */
     IEnumerator stopJump() 
     {
         yield return new WaitForSeconds(0.75f);
@@ -147,7 +123,55 @@ public class PlayerController : MonoBehaviour
         //PickUpManager.canJump = false;
 
     }
+    void HandleInput()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            if (currLaneIndex > 0)
+            {
+                currLaneIndex--;
+                UpdateTargetPos();
+            }
+            Debug.Log("Left");
 
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+
+            if (currLaneIndex < lanePosition.Length-1)
+            {
+                currLaneIndex++;
+                UpdateTargetPos();
+            }
+            Debug.Log("Right");
+
+
+
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+
+
+        }
+
+
+
+    }
+    void UpdateTargetPos()
+    {
+        targetPos = new Vector3(lanePosition[currLaneIndex], transform.position.y, transform.position.z);
+    }
+    void MoveToLane() 
+    {
+        float targetX = lanePosition[currLaneIndex];
+        targetPos = new Vector3 (targetX, transform.position.y, transform.position.z);
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, laneSwapSpeed * Time.deltaTime);
+    }
+    void Jumping() 
+    { 
+    
+    
+    }
     void Jump() 
     { 
         if (isAlive == true && canJump == true && Input.GetKey(KeyCode.Space) && (laneChange == false)) //temp lanChange will swap vector numbers with variables
