@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public float playerSpeed = 2;
 
     public float laneSwapSpeed = 2;
+    [Header ("Jump")]
     public  int JumpEffect { get; set; }
     //public float horizontalSpeed = 3;
     float _move;
@@ -40,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        GetComponent<Rigidbody>().linearVelocity = new Vector3(0, 0, 5);
+        GetComponent<Rigidbody>().linearVelocity = new Vector3(0, 0, playerSpeed);
         targetPos = new Vector3(lanePosition[currLaneIndex], transform.position.y, transform.position.z);
     }
 
@@ -167,18 +168,14 @@ public class PlayerController : MonoBehaviour
         targetPos = new Vector3 (targetX, transform.position.y, transform.position.z);
         transform.position = Vector3.MoveTowards(transform.position, targetPos, laneSwapSpeed * Time.deltaTime);
     }
-    void Jumping() 
-    { 
-    
-    
-    }
+   
     void Jump() 
     { 
-        if (isAlive == true && canJump == true && Input.GetKey(KeyCode.Space) && (laneChange == false)) //temp lanChange will swap vector numbers with variables
+        if (isAlive == true && canJump == true && Input.GetKey(KeyCode.Space)) 
         {
 
             //PickUpManager.canJump = true;
-            GetComponent<Rigidbody>().linearVelocity = new Vector3(0, 4 * JumpEffect, 5);
+            GetComponent<Rigidbody>().linearVelocity = new Vector3(0, 5 * JumpEffect, 5);
                 //Debug.Log("No Jump");
                 canJump = false;
                 
