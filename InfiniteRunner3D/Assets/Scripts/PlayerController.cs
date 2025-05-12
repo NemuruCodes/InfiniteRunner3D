@@ -6,11 +6,17 @@ using Unity.VisualScripting;
 public class PlayerController : MonoBehaviour
 {
     public float playerSpeed = 2;
+
+    public float laneSwapSpeed = 2;
     public  int JumpEffect { get; set; }
     //public float horizontalSpeed = 3;
     float _move;
     //public float limitLeft = 5.5f;
     //public float limitRight = -5.5f;
+
+    public Transform[] lanes;
+    int currentLane = 0;
+
     private bool laneChange = false;
 
     private bool canJump = true;
@@ -36,34 +42,66 @@ public class PlayerController : MonoBehaviour
             transform.Translate(Vector3.forward * Time.deltaTime * playerSpeed, Space.World); //delta time is relative to game speed
         }
         */
+      
 
+        if (Input.GetKey(KeyCode.A))
+        {
+            if (lanes.Length == 0) return;
+
+            Transform target = lanes[currentLane];
+
+            transform.position = Vector3.MoveTowards(
+                transform.position, target.position,
+                laneSwapSpeed * Time.deltaTime);
+
+            if (Vector3.Distance(transform.position, target.position) < 0.01f)
+            {
+                currentLane = (currentLane + 1) % lanes.Length;
+
+            }
+
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+
+            if (lanes.Length == 1) return;
+
+            Transform target = lanes[currentLane];
+
+            transform.position = Vector3.MoveTowards(
+                transform.position, target.position,
+                laneSwapSpeed * Time.deltaTime);
+
+            if (Vector3.Distance(transform.position, target.position) < 0.01f)
+            {
+                currentLane = (currentLane - 1) % lanes.Length;
+
+            }
+
+
+
+        }
         
+        /*
         if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && (laneChange == false) && (transform.position.x > -2))
         {
-            //if(this.gameObject.transform.position.x <= limitLeft) 
-            // {
-            //transform.Translate(Vector3.left * Time.deltaTime * horizontalSpeed);
-
+           
             GetComponent<Rigidbody>().linearVelocity = new Vector3(-3, 0, 5);
             laneChange = true;
-            //}
+          
             StartCoroutine(stopLaneChange());
         
         }
         if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && (laneChange == false) && (transform.position.x < 2))
-        {// temp canJump to stop glitch
-            // if (this.gameObject.transform.position.x >= limitRight) 
-            //{ 
-
-            // transform.Translate(Vector3.left * Time.deltaTime * horizontalSpeed * -1);
-            // }
-
+        {   
+           
             GetComponent<Rigidbody>().linearVelocity = new Vector3(3, 0, 5);
             laneChange = true;
             StartCoroutine(stopLaneChange());
         }
-
+        */
         Jump();
+
         /*
 
         if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
