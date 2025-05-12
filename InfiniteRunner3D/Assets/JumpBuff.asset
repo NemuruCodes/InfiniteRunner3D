@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2eab886958b48540ab2a2a4e8bc3169, type: 3}
   m_Name: JumpBuff
   m_EditorClassIdentifier: 
-  changeJump: 0
+  changeJump: 14

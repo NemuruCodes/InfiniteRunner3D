@@ -16,32 +16,39 @@ public class PlayerController : MonoBehaviour
     private Vector3 targetPos;
 
 
-    public float playerSpeed = 2;
+    public float playerSpeed = 2f;
 
-    public float laneSwapSpeed = 2;
-    [Header ("Jump")]
+    public float laneSwapSpeed = 2f;
+    [Header ("Jump Settings")]
     public  int JumpEffect { get; set; }
-    //public float horizontalSpeed = 3;
-    float _move;
-    //public float limitLeft = 5.5f;
-    //public float limitRight = -5.5f;
-
     
+    public float jumpForce = 8f;
 
-    private bool laneChange = false;
+    public float gravityMultiplier = 2.5f;
+    public float lowJumpMultiplier = 2f;
 
-    private bool canJump = true;
+    public Collider groundCheck;
+    public LayerMask groundLayer;
+    //public float groundCheckRadius = 0.2f;
+
+    public float vertVelocity = 0f;
+    private bool isJumping = false;
+
+    public float jumpSpeed = 2;
+    
 
     private bool isAlive = true;
 
-    // public int JumpEffect = 1;
-
     
+
+    private Rigidbody rb;
     
 
     void Start()
     {
-        GetComponent<Rigidbody>().linearVelocity = new Vector3(0, 0, playerSpeed);
+
+        rb = GetComponent<Rigidbody>();
+
         targetPos = new Vector3(lanePosition[currLaneIndex], transform.position.y, transform.position.z);
     }
 
@@ -56,7 +63,7 @@ public class PlayerController : MonoBehaviour
         */
         HandleInput();
         MoveToLane();
-      
+        
         
         /*
         if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && (laneChange == false) && (transform.position.x > -2))
@@ -76,7 +83,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(stopLaneChange());
         }
         */
-        Jump();
+        
 
         /*
 
@@ -103,6 +110,22 @@ public class PlayerController : MonoBehaviour
         }
         */
     }
+    private void FixedUpdate()
+    {
+        Vector3 velocity = rb.linearVelocity;
+        velocity.z = playerSpeed;
+        rb.linearVelocity = velocity;
+
+        if (rb.linearVelocity.y < 0 && isAlive)
+        {
+            rb.linearVelocity += Vector3.up * Physics.gravity.y * (gravityMultiplier - 1) * Time.fixedDeltaTime;
+        }
+        // Optional: Apply extra gravity when player lets go of jump early
+        else if (rb.linearVelocity.y > 0 && !Input.GetKey(KeyCode.Space) && isAlive)
+        {
+            rb.linearVelocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.fixedDeltaTime;
+        }
+    }
     /*
     IEnumerator stopLaneChange() 
     {
@@ -117,10 +140,10 @@ public class PlayerController : MonoBehaviour
     IEnumerator stopJump() 
     {
         yield return new WaitForSeconds(0.75f);
-        GetComponent<Rigidbody>().linearVelocity = new Vector3(0, -4 * JumpEffect, 5);
+        GetComponent<Rigidbody>().linearVelocity = new Vector3(0, -5 * JumpEffect, 5);
         yield return new WaitForSeconds(0.75f);
         GetComponent<Rigidbody>().linearVelocity = new Vector3(0, 0, 5);
-        canJump = true;
+        isJumping = false;
         //PickUpManager.canJump = false;
 
     }
@@ -149,10 +172,14 @@ public class PlayerController : MonoBehaviour
 
 
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && isJumping == false)
         {
 
-
+            vertVelocity = jumpForce;
+            Jump();
+            isJumping =true;
+            
+            
         }
 
 
@@ -162,6 +189,7 @@ public class PlayerController : MonoBehaviour
     {
         targetPos = new Vector3(lanePosition[currLaneIndex], transform.position.y, transform.position.z);
     }
+  
     void MoveToLane() 
     {
         float targetX = lanePosition[currLaneIndex];
@@ -170,30 +198,43 @@ public class PlayerController : MonoBehaviour
     }
    
     void Jump() 
-    { 
-        if (isAlive == true && canJump == true && Input.GetKey(KeyCode.Space)) 
-        {
-
-            //PickUpManager.canJump = true;
-            GetComponent<Rigidbody>().linearVelocity = new Vector3(0, 5 * JumpEffect, 5);
-                //Debug.Log("No Jump");
-                canJump = false;
-                
-                StartCoroutine(stopJump());
-
-        }
-    
-    
-    }
-    public void OnCollisionEnter(Collision collision)
     {
         /*
-        if(collision.gameObject.tag == "Ground")
+        if( isGrounded() && vertVelocity < 0 )
+        {
+            vertVelocity = -2f;
+            isJumping = false;
+        }
+        else
+        {
+            vertVelocity += Gravity * Time.deltaTime;
+        }
+        /*
+        //PickUpManager.canJump = true;
+        GetComponent<Rigidbody>().linearVelocity = new Vector3(0, 5 * JumpEffect, 5);
+            //Debug.Log("No Jump");
+            canJump = false;
+
+            StartCoroutine(stopJump());
+        */
+        /*
+        transform.position += new Vector3(0, vertVelocity, 0) * Time.deltaTime;
+        */
+        
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+
+    }
+    
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+        if(collision.gameObject.CompareTag("Ground"))
         {
             Debug.Log("Jumpie");
-            canJump = true;
+            isJumping = false;
         }
-        */
+        
         if (collision.gameObject.tag == "Obstacle") 
         {
             Debug.Log("Hit");
@@ -201,4 +242,5 @@ public class PlayerController : MonoBehaviour
         
         }
     }
+   
 }

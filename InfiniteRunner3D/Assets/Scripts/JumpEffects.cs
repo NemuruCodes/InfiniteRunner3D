@@ -9,12 +9,12 @@ public class JumpEffects : PowerEffects
     public override void ApplyEffect(GameObject target)
     {
         //PlayerController.JumpEffect = 2;
-        target.GetComponent<PlayerController>().JumpEffect = 2;
+        target.GetComponent<PlayerController>().jumpForce = changeJump;
     }
 
     public override void RemoveEffect(GameObject target)
     {
-        target.GetComponent<PlayerController>().JumpEffect = 1;
+        target.GetComponent<PlayerController>().jumpForce = 8f;
         PickUpManager.JumpCheck = false;
         Debug.Log("Jump");
     }
