@@ -17,5 +17,5 @@ public class JumpEffects : PowerEffects
         target.GetComponent<PlayerController>().jumpForce = 8f;
         PickUpManager.JumpCheck = false;
         Debug.Log("Jump");
-    }
+    }   
 }

@@ -62,9 +62,6 @@ public class PlayerController : MonoBehaviour
         }
         */
         HandleInput();
-        
-
-
 
        
     }
