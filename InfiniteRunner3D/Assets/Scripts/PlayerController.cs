@@ -62,53 +62,11 @@ public class PlayerController : MonoBehaviour
         }
         */
         HandleInput();
-        MoveToLane();
-        
-        
-        /*
-        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && (laneChange == false) && (transform.position.x > -2))
-        {
-           
-            GetComponent<Rigidbody>().linearVelocity = new Vector3(-3, 0, 5);
-            laneChange = true;
-          
-            StartCoroutine(stopLaneChange());
-        
-        }
-        if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && (laneChange == false) && (transform.position.x < 2))
-        {   
-           
-            GetComponent<Rigidbody>().linearVelocity = new Vector3(3, 0, 5);
-            laneChange = true;
-            StartCoroutine(stopLaneChange());
-        }
-        */
         
 
-        /*
-
-        if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-        {
 
 
-            //transform.Translate(Vector3.left * Time.deltaTime * horizontalSpeed);
-
-            //transform.Translate()position.x = -5;
-
-
-        }
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-            if (this.gameObject.transform.position.x > limitRight)
-            {
-
-                transform.Translate(Vector3.left * Time.deltaTime * horizontalSpeed * -1);
-            }
-
-
-
-        }
-        */
+       
     }
     private void FixedUpdate()
     {
@@ -116,6 +74,7 @@ public class PlayerController : MonoBehaviour
         velocity.z = playerSpeed;
         rb.linearVelocity = velocity;
 
+        
         if (rb.linearVelocity.y < 0 && isAlive)
         {
             rb.linearVelocity += Vector3.up * Physics.gravity.y * (gravityMultiplier - 1) * Time.fixedDeltaTime;
@@ -125,6 +84,8 @@ public class PlayerController : MonoBehaviour
         {
             rb.linearVelocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.fixedDeltaTime;
         }
+
+        MoveToLane();
     }
     /*
     IEnumerator stopLaneChange() 
@@ -137,16 +98,7 @@ public class PlayerController : MonoBehaviour
 
     }
     */
-    IEnumerator stopJump() 
-    {
-        yield return new WaitForSeconds(0.75f);
-        GetComponent<Rigidbody>().linearVelocity = new Vector3(0, -5 * JumpEffect, 5);
-        yield return new WaitForSeconds(0.75f);
-        GetComponent<Rigidbody>().linearVelocity = new Vector3(0, 0, 5);
-        isJumping = false;
-        //PickUpManager.canJump = false;
-
-    }
+   
     void HandleInput()
     {
         if (Input.GetKeyDown(KeyCode.A))
@@ -243,4 +195,5 @@ public class PlayerController : MonoBehaviour
         }
     }
    
+
 }

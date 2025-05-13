@@ -10,12 +10,12 @@ public class DestroyerMove : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         Vector3 velocity = rb.linearVelocity;
         velocity.z = Speed;
         rb.linearVelocity = velocity;
     }
+    // Update is called once per frame
+   
 }
