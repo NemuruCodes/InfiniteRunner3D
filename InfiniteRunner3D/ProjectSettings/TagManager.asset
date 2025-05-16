@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - PickUp
   - groundCheck
+  - Boss
   layers:
   - Default
   - TransparentFX

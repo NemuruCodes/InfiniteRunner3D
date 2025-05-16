@@ -4,7 +4,7 @@ using UnityEngine;
 public class BossManager : MonoBehaviour
 {
     //public bool BossStart = false;
-    bool isAlive = true;
+    public static bool isAlive { get; set; }
     bool Pickup = false;
     bool First = true;
     public Transform LeftAttackSpawn;
@@ -23,7 +23,7 @@ public class BossManager : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("start");
+        //Debug.Log("start");
         StartCoroutine(BossController());
     }
 
@@ -57,7 +57,7 @@ public class BossManager : MonoBehaviour
                 yield return new WaitForSeconds(5f);
                 First = false;
             }
-            Debug.Log("Time");
+            //Debug.Log("Time");
             yield return new WaitForSeconds(3f);
 
             // Randomly pick a number between 0 and 1
@@ -65,26 +65,26 @@ public class BossManager : MonoBehaviour
 
             if (randomAmount == 1 && !Pickup)
             {
-                Debug.Log("Time2");
+                // Debug.Log("Time2");
                 RandomAttackType(1);
                 Pickup = true;
             }
             else if (randomAmount == 2 && !Pickup)
             {
-                Debug.Log("Time3");
+                //Debug.Log("Time3");
                 RandomAttackType(2);
                 Pickup = true;
             }
             else if (randomAmount == 3 && !Pickup)
             {
-                Debug.Log("Time4");
+                //Debug.Log("Time4");
                 RandomAttackType(3);
                 Pickup = true;
             }
 
             else if (Pickup)
             {
-                Debug.Log("BulletPickUp");
+                //Debug.Log("BulletPickUp");
                 StartCoroutine(PickUp());
                 yield return new WaitForSeconds(2f);
                 Pickup = false;
@@ -98,7 +98,7 @@ public class BossManager : MonoBehaviour
         if (Type == 1)
         {
 
-            Debug.Log("Wide");
+            //Debug.Log("Wide");
             GameObject WideAttack = Instantiate(WideAttackPrefab, MidAttackSpawn.position, Quaternion.identity);
 
              //rbAttacks = GetComponent<Rigidbody>();
@@ -112,13 +112,13 @@ public class BossManager : MonoBehaviour
         }
         else if (Type == 2)
         {
-            Debug.Log("Type 2");
+            //Debug.Log("Type 2");
             int randomAttack = Random.Range(1, 4);
 
             switch (randomAttack)
             {
                 case 1:
-                    Debug.Log("RanSwitch2,1");
+                    //Debug.Log("RanSwitch2,1");
 
                     int secondRandom = Random.Range(1, 3); 
 
@@ -129,25 +129,25 @@ public class BossManager : MonoBehaviour
                     }
                     else if (secondRandom == 2)
                     {
-                        StartCoroutine(LeftLane(1));
+                         StartCoroutine(LeftLane(1));
                         StartCoroutine(RightLane(1));
                     }
 
                     break;
 
                 case 2:
-                    Debug.Log("RanSwitch2,2");
+                    //Debug.Log("RanSwitch2,2");
 
                     secondRandom = Random.Range(1, 3);
 
                     if (secondRandom == 1)
                     {
-                        StartCoroutine(MidLane(1));
+                         StartCoroutine(MidLane(1));
                         StartCoroutine(LeftLane(1));
                     }
                     else if (secondRandom == 2)
                     {
-                        StartCoroutine(MidLane(1));
+                         StartCoroutine(MidLane(1));
                         StartCoroutine(RightLane(1));
                     }
 
@@ -155,7 +155,7 @@ public class BossManager : MonoBehaviour
 
 
                 case 3:
-                    Debug.Log("RanSwitch2,3");
+                    //Debug.Log("RanSwitch2,3");
 
                     secondRandom = Random.Range(1, 3);
 
@@ -179,44 +179,43 @@ public class BossManager : MonoBehaviour
 
         else if (Type == 3)
         {
-            Debug.Log("Type 3");
+            //Debug.Log("Type 3");
             int randomAttack = Random.Range(1, 4);
 
             switch (randomAttack)
             {
                 case 1:
-                    Debug.Log("RanSwitch3,1");
+                    //Debug.Log("RanSwitch3,1");
                     //Debug.Log("Case 1 triggered");
 
                     int secondRandom = Random.Range(1, 3);
 
                     if (secondRandom == 1)
                     {
-                        StartCoroutine(LeftLane(2));
+                         StartCoroutine(LeftLane(2));
                         StartCoroutine(MidLane(2));
                     }
                     else if (secondRandom == 2)
                     {
-                        StartCoroutine(LeftLane(2));
+                         StartCoroutine(LeftLane(2));
                         StartCoroutine(RightLane(2));
                     }
 
                     break;
 
                 case 2:
-                    //Debug.Log("Case 2 triggered");
-                    Debug.Log("RanSwitch3,2");
+                    //Debug.Log("RanSwitch3,2");
 
                     secondRandom = Random.Range(1, 3);
 
                     if (secondRandom == 1)
                     {
-                        StartCoroutine(MidLane(2));
+                         StartCoroutine(MidLane(2));
                         StartCoroutine(LeftLane(2));
                     }
                     else if (secondRandom == 2)
                     {
-                        StartCoroutine(MidLane(2));
+                         StartCoroutine(MidLane(2));
                         StartCoroutine(RightLane(2));
                     }
 
@@ -224,8 +223,7 @@ public class BossManager : MonoBehaviour
 
 
                 case 3:
-                    //Debug.Log("Case 3 triggered");
-                    Debug.Log("RanSwitch3,3");
+                    //Debug.Log("RanSwitch3,3");
 
                     secondRandom = Random.Range(1, 3);
 
@@ -278,7 +276,7 @@ public class BossManager : MonoBehaviour
 
     IEnumerator LeftLane(int Type)
     {
-        Debug.Log("LeftLane");
+        //Debug.Log("LeftLane");
         if (Type == 1)
         {
             Vector3 AttackSpawnL = LeftAttackSpawn.position + new Vector3(0, 0, -2);
@@ -288,26 +286,26 @@ public class BossManager : MonoBehaviour
         }
         else if (Type == 2)
         {
-            Debug.Log("WarningLine");
+            //Debug.Log("WarningLine");
             Vector3 AttackSpawnL = LeftAttackSpawn.position + new Vector3(0, 0, -20);
             GameObject LineWarningAttack = Instantiate(LineWarningAttackPrefab, AttackSpawnL, Quaternion.identity);
-            LineWarningAttack.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 8), ForceMode.Impulse);
+            LineWarningAttack.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 7.9f), ForceMode.Impulse);
 
             yield return new WaitForSeconds(2f);
 
-            Debug.Log("AttackLine");
+           // Debug.Log("AttackLine");
             Vector3 AttackSpawnL2 = LeftAttackSpawn.position + new Vector3(0, 0, -20);
             GameObject LineAttack = Instantiate(LineAttackPrefab, AttackSpawnL2, Quaternion.identity);
-            LineAttack.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 8), ForceMode.Impulse);
+            LineAttack.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 7.9f), ForceMode.Impulse);
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(10f);
         }
     }
 
 
     IEnumerator MidLane(int Type)
     {
-        Debug.Log("MidLane");
+        //Debug.Log("MidLane");
         if (Type == 1)
         {
             Vector3 AttackSpawnM = MidAttackSpawn.position + new Vector3(0, 0, -2);
@@ -317,25 +315,25 @@ public class BossManager : MonoBehaviour
         }
         else if (Type == 2)
         {
-            Debug.Log("WarningLine");
+           // Debug.Log("WarningLine");
             Vector3 AttackSpawnM = MidAttackSpawn.position + new Vector3(0, 0, -20);
             GameObject LineWarningAttack = Instantiate(LineWarningAttackPrefab, AttackSpawnM, Quaternion.identity);
-            LineWarningAttack.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 8), ForceMode.Impulse);
+            LineWarningAttack.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 7.9f), ForceMode.Impulse);
 
             yield return new WaitForSeconds(2f);
 
-            Debug.Log("AttackLine");
+           // Debug.Log("AttackLine");
             Vector3 AttackSpawnM2 = MidAttackSpawn.position + new Vector3(0, 0, -20);
             GameObject LineAttack = Instantiate(LineAttackPrefab, AttackSpawnM2, Quaternion.identity);
-            LineAttack.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 8), ForceMode.Impulse);
+            LineAttack.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 7.9f), ForceMode.Impulse);
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(10f);
         }
     }
 
     IEnumerator RightLane(int Type)
     {
-        Debug.Log("RightLane");
+       // Debug.Log("RightLane");
         if (Type == 1)
         {
             Vector3 AttackSpawnR = RightAttackSpawn.position + new Vector3(0, 0, -2);
@@ -345,20 +343,20 @@ public class BossManager : MonoBehaviour
         }
         else if (Type == 2)
         {
-            Debug.Log("WarningLine");
+            //Debug.Log("WarningLine");
 
             Vector3 AttackSpawnR = RightAttackSpawn.position + new Vector3(0, 0,-20);
             GameObject LineWarningAttack = Instantiate(LineWarningAttackPrefab, AttackSpawnR, Quaternion.identity);
-            LineWarningAttack.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 8), ForceMode.Impulse);
+            LineWarningAttack.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 7.9f), ForceMode.Impulse);
 
             yield return new WaitForSeconds(2f);
 
-            Debug.Log("AttackLine");
+            //Debug.Log("AttackLine");
             Vector3 AttackSpawnR2 = RightAttackSpawn.position + new Vector3(0, 0, -20);
             GameObject LineAttack = Instantiate(LineAttackPrefab, AttackSpawnR2, Quaternion.identity);
-            LineAttack.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 8), ForceMode.Impulse);
+            LineAttack.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 7.9f), ForceMode.Impulse);
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(10f);
         }
     }
 }

@@ -20,6 +20,7 @@ public class SpawnBoss : MonoBehaviour
         {
             AddBoss();
             BossCheck = false;
+            BossManager.isAlive = true;
             //BossMove = true;
         }
 
