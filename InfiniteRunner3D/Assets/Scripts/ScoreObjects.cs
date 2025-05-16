@@ -15,7 +15,7 @@ public class ScoreObjects : MonoBehaviour
         
         if (other.gameObject.tag == "Obstacle")
         {
-            Debug.Log("Trigger");
+            //Debug.Log("Trigger");
             obstacle = other.name.ToLower();
 
             if (obstacle == "crate01(clone)" || obstacle == "debri01(clone)") 
