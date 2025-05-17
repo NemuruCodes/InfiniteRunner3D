@@ -10,7 +10,7 @@ public class FreezeGame : MonoBehaviour
     public float speed = 5f;
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.CompareTag("Obstacle"))
+        if (collision.gameObject.CompareTag("Obstacle")|| collision.gameObject.CompareTag("Rocket"))
         {
             
 

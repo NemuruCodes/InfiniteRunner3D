@@ -11,6 +11,9 @@ TagManager:
   - groundCheck
   - Boss
   - StartGround
+  - Rocket
+  - Shield
+  - Breaker
   layers:
   - Default
   - TransparentFX

@@ -7,14 +7,19 @@ public class PickUpManager : MonoBehaviour
 {
 
     public static bool BulletCheck { get; set; }
-    public static bool JumpCheck { get; set; }
-    public float duration = 4f;
+    public static bool JumpCheck { get; set; } 
+    public static bool ShieldCheck { get; set; } 
+    public static bool PointCheck { get; set; }
+
+    public float duration = 5f;
 
     public PowerEffects JumpBuff;
 
     public PickUpUI pickUpUI = PickUpUI.Instance;
 
     private bool jumpRoutineStarted = false;
+    
+    public GameObject Shield;
 
     //public static bool canJump { get; set; }
     void Start()
@@ -38,9 +43,20 @@ public class PickUpManager : MonoBehaviour
             jumpRoutineStarted = true;
            // JumpRoutine();
         }
+        
+        if(ShieldCheck)
+        {
+            StartCoroutine (ShieldRoutine());
+            ShieldCheck = false;
+        }
 
+        if(PointCheck)
+        {
+            StartCoroutine(PointRoutine());
+            PointCheck = false;
+        }
         BulletCheck = false;
-
+        
 
     }
 
@@ -52,7 +68,12 @@ public class PickUpManager : MonoBehaviour
 
         if(pickUpUI != null)
         {
-            pickUpUI.ShowBuff("Jump Boost", duration);
+            if(jumpRoutineStarted == true)
+            {
+                pickUpUI.ShowBuff("Jump Boost", duration);
+            }
+           
+            
         }
 
         while (setTime < duration)
@@ -71,12 +92,46 @@ public class PickUpManager : MonoBehaviour
         jumpRoutineStarted = false;
 
     }
+    /*
+    public IEnumerator ShieldRoutine()
+    {
+        float setTime = 0f;
+        Shield.SetActive(true);
+        new WaitForSeconds(setTime);
+        Shield.SetActive(false);
 
-   
+       
+        
+        yield return null;
+    }
+   */
 
     public void deactivateJumpEffect(GameObject player)
     {
         JumpBuff.RemoveEffect(player);
+        
+    }
+
+  
+    private IEnumerator ShieldRoutine()
+    {
+        pickUpUI.ShowBuff("Shield", duration);  // Show UI
+        Shield.SetActive(true);                 // Enable shield
+
+        yield return new WaitForSeconds(5f);  // Wait for the shield duration
+
+        Shield.SetActive(false);               // Disable shield
+    }
+
+    private IEnumerator PointRoutine()
+    {
+       
+        pickUpUI.ShowBuff("X2 Points", duration);
+
+
+        yield return new WaitForSeconds(5f) ;
+
+
         
     }
 }

@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 8729226396202615011}
   - component: {fileID: 1973879584945579165}
   - component: {fileID: 1757583381600035569}
+  - component: {fileID: 2056397884929569211}
   m_Layer: 0
   m_Name: Rocket
-  m_TagString: Obstacle
+  m_TagString: Rocket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,7 +120,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4787642296952522936}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3983b075f6456ee459fbfd2ba91aab08, type: 3}
   m_Name: 
@@ -136,4 +137,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eecc7036827ace744ad076c726284318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RocketSpeed: 5
+  RocketSpeed: 8
+--- !u!114 &2056397884929569211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4787642296952522936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49c145a22cfe774abc3d3141b47b6f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class SpawnObstaclesOnTiles : MonoBehaviour
 {
@@ -31,22 +32,34 @@ public class SpawnObstaclesOnTiles : MonoBehaviour
 
     public void SpawnObjectsOnTile(Transform tile)
     {
+        HashSet<float> usedLanes = new HashSet<float>();
+
         for (int i = 0; i < obstaclePrefabs.Length; i++)
         {
             if (Random.value <= spawnChances[i])
             {
-                float laneX = lanes[Random.Range(0, lanes.Length)];
-                GetAlternateLane(laneX);
+                float laneX;
+                int maxAttempts = 10;
+                int attempts = 0;
+
+                do
+                {
+                    laneX = lanes[Random.Range(0, lanes.Length)];
+                    attempts++;
+                }
+                while (usedLanes.Contains(laneX) && attempts < maxAttempts);
+
+                if (usedLanes.Contains(laneX)) continue;
+
+                usedLanes.Add(laneX);
+                    
+                laneX = lanes[Random.Range(0, lanes.Length)];
+               
                 Vector3 spawnPos = new Vector3(tile.position.x + laneX, spawnY, tile.position.z);
                 Instantiate(obstaclePrefabs[i], spawnPos, obstaclePrefabs[i].rotation);
                 
             }
         }
     }
-    float GetAlternateLane(float currentLane)
-    {
-        if (currentLane == -3f) return 0f;
-        if (currentLane == 0f) return 3f;
-        return -3f;
-    }
+   
 }

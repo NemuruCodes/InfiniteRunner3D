@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1687884362150157657}
   - component: {fileID: 2795559462665084855}
   - component: {fileID: 3959479011235918479}
+  - component: {fileID: -5437205172272135513}
   m_Layer: 0
   m_Name: Debri01
   m_TagString: Obstacle
@@ -117,7 +118,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 547885487374213456}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3983b075f6456ee459fbfd2ba91aab08, type: 3}
   m_Name: 
@@ -149,3 +150,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-5437205172272135513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547885487374213456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49c145a22cfe774abc3d3141b47b6f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

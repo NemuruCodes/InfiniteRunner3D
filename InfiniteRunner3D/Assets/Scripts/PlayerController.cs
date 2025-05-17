@@ -184,7 +184,7 @@ public class PlayerController : MonoBehaviour
             isJumping = false;
         }
         
-        if (collision.gameObject.tag == "Obstacle") 
+        if (collision.gameObject.tag == "Obstacle" || collision.gameObject.tag == "Rocket") 
         {
             Debug.Log("Hit");
             isAlive = false;

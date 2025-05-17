@@ -5,11 +5,13 @@ public class GameManager : MonoBehaviour
 {
     public GameObject tilePrefab;
     public float tileSpacing = 12f;
-    private Vector3 spawnPos = new Vector3(0, 0, 96f);
+    public float FirstSpawn = 108f;
+    private Vector3 spawnPos;
     public SpawnObstaclesOnTiles objectSpawner;
 
     void Start()
     {
+        spawnPos = new Vector3(0, 0, FirstSpawn);
         StartCoroutine(SpawnTiles());
     }
 
