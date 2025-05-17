@@ -4,7 +4,7 @@ public class ScoreObjects : MonoBehaviour
 {
     public PointManager pointManager = PointManager.Instance;
     
-    private const int _weakpoints = 4, _medpoints = 8, _highpoints = 12;
+    private const int _weakpoints = 2, _medpoints = 4, _highpoints = 6;
 
     private string obstacle;
 

@@ -3,7 +3,27 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject tilePrefab;
+    public float tileSpacing = 12f;
+    private Vector3 spawnPos = new Vector3(0, 0, 96f);
+    public SpawnObstaclesOnTiles objectSpawner;
 
+    void Start()
+    {
+        StartCoroutine(SpawnTiles());
+    }
+
+    IEnumerator SpawnTiles()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            GameObject newTile = Instantiate(tilePrefab, spawnPos, Quaternion.identity);
+            objectSpawner.SpawnObjectsOnTile(newTile.transform);
+            spawnPos.z += tileSpacing;
+        }
+    }
+    /*
     public Transform tileObject;
     private Vector3 spawnNextTile;
 
@@ -137,4 +157,5 @@ public class GameManager : MonoBehaviour
 
 
     }
+    */
 }

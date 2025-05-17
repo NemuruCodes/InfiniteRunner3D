@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56b1e3ae144795346a8601ae6c9ad936, type: 3}
+  m_Name: Debri
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 547885487374213456, guid: 154b9a01feebf6b4182a7048920122e6, type: 3}
+  spawnChance: 1
+  offset: {x: 0, y: 0, z: 15}
