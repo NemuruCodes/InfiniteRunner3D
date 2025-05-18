@@ -11,7 +11,7 @@ public class PointManager : MonoBehaviour
     
     private void Update()
     {
-        if ((value > 99) && !Spawned )
+        if ((value > 199) && !Spawned )
         {
             SpawnBoss.BossCheck = true;
             Spawned = true;

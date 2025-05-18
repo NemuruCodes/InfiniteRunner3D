@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -1171265089092577624}
   m_Layer: 0
   m_Name: AnotherBuff
-  m_TagString: PickUp
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

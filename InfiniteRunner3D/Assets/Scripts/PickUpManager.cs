@@ -65,16 +65,7 @@ public class PickUpManager : MonoBehaviour
 
         GameObject player = GameObject.FindGameObjectWithTag("Player").gameObject;
         float setTime = 0f;
-
-        if(pickUpUI != null)
-        {
-            if(jumpRoutineStarted == true)
-            {
-                pickUpUI.ShowBuff("Jump Boost", duration);
-            }
-           
-            
-        }
+        pickUpUI.ShowBuff("Jump Boost", duration);
 
         while (setTime < duration)
         {
