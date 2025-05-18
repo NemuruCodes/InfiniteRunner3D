@@ -9,7 +9,7 @@ public class DeleteIfInside : MonoBehaviour
     {
        if (inside) return;
 
-       if(other.CompareTag("Obstacle") || other.CompareTag("PickUp") && other.gameObject != gameObject)
+       if(other.CompareTag("Obstacle") || other.CompareTag("PickUp")) //&& other.gameObject != gameObject)
         {
             
             inside = true;
