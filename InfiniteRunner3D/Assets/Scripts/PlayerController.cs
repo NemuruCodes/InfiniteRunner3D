@@ -42,7 +42,8 @@ public class PlayerController : MonoBehaviour
     
 
     private Rigidbody rb;
-    
+
+    public FreezeGame freezeGame;
 
     void Start()
     {
@@ -130,7 +131,10 @@ public class PlayerController : MonoBehaviour
             
             
         }
-
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            freezeGame.PauseGame(); 
+        }
 
 
     }
