@@ -5669,7 +5669,7 @@ MonoBehaviour:
   - 0.31
   - 0.5
   - 0.25
-  spawnY: 3.1
+  spawnY: 3.5
 --- !u!4 &1836414711
 Transform:
   m_ObjectHideFlags: 0
