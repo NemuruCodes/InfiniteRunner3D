@@ -105,8 +105,9 @@ public class PlayerController : MonoBehaviour
             {
                 currLaneIndex--;
                 UpdateTargetPos();
+                Debug.Log("Left");
             }
-            //Debug.Log("Left");
+            
 
         }
         else if (Input.GetKeyDown(KeyCode.D))
@@ -116,8 +117,9 @@ public class PlayerController : MonoBehaviour
             {
                 currLaneIndex++;
                 UpdateTargetPos();
+                Debug.Log("Right");
             }
-            //Debug.Log("Right");
+            
 
 
 
