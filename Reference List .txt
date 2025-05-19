@@ -1,0 +1,19 @@
+Reference List:
+
+
+
+Easy Enemy Health Bars in Unity. 2023. Youtube video, added by BMo. [Online]. 
+Available at:https:https://www.youtube.com/watch?v=_lREXfAMUcE [Accessed 19 May 2025].
+
+
+6 Ways to move objects in Unity [Tutorial]. Youtube video, added by Feri Fm. [Online].
+Available at: https://www.youtube.com/watch?v=-thhMXmTM7Q [Accessed 19 May 2025].
+
+Rob Tuytel . MetalPlate , Poly Haven. [Online].  
+Available at: https://polyhaven.com/a/metal_plate [Accessed 19 May 2025].
+
+ambientCG . Metal 046 B [Online]. 
+Available at: https:https://ambientcg.com/view?id=Metal046B [Accessed 19 May 2025].
+
+Dungeon Mason . Robot Hero : PBR HP Polyart , Unity Asset Store. [Online]
+Available at: https://assetstore.unity.com/packages/3d/characters/robots/robot-hero-pbr-hp-polyart-106154 [Accessed 19 May 2025].
