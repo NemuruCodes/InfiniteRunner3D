@@ -14,6 +14,8 @@ TagManager:
   - Rocket
   - Shield
   - Breaker
+  - x2
+  - ShieldPick
   layers:
   - Default
   - TransparentFX

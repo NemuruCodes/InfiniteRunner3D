@@ -9,13 +9,20 @@ public class DeleteIfInside : MonoBehaviour
     {
        if (inside) return;
 
-       if(other.CompareTag("Obstacle") || other.CompareTag("PickUp")) //&& other.gameObject != gameObject)
+       if(other.CompareTag("Obstacle")) //&& other.gameObject != gameObject)
         {
             
             inside = true;
             Destroy(this.gameObject);
         }
+       else if (other.CompareTag("PickUp"))
+        {
+            inside = true;
+            Destroy(this.gameObject);
+            Debug.Log("Destroy Pick Up");
+        }
         
+       inside = false;
     }
 
     
