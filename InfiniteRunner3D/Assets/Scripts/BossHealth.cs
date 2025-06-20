@@ -1,10 +1,14 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BossHealth : MonoBehaviour
 {
     Rigidbody rb;
     float MaxHealth = 10f;
     float Health;
+    int BossPoints = 50;
+
+    public PointManager pointManager = PointManager.Instance;
 
     [SerializeField] FloatingHealthBar healthbar;
 
@@ -33,8 +37,11 @@ public class BossHealth : MonoBehaviour
 
     public void Destroy()
     {
+        GameEvents.Instance.BossDefeated();
+
         BossManager.isAlive = false;
         Destroy(transform.parent.gameObject);
+        pointManager.value += BossPoints;
     }
 
 }

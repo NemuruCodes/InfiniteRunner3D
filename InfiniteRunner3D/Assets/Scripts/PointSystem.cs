@@ -11,11 +11,22 @@ public class PointSystem : MonoBehaviour
     [SerializeField] private GameObject scoreDisplay;
 
 
-    TextMeshProUGUI valText;
+    private TextMeshProUGUI valText;
     void Start()
     {
+        /*
         valText = scoreDisplay.GetComponent<TextMeshProUGUI>();
         valText.text = PointManager.Instance.value.ToString();
+        */
+        if (scoreDisplay != null)
+        {
+            valText = scoreDisplay.GetComponent<TextMeshProUGUI>();
+        }
+
+        if (valText != null)
+        {
+            valText.text = PointManager.Instance.value.ToString();
+        }
 
 
     }
@@ -23,8 +34,12 @@ public class PointSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        valText.text = PointManager.Instance.value.ToString();
+        //valText.text = PointManager.Instance.value.ToString();
 
+        if (valText != null)
+        {
+            valText.text = PointManager.Instance.value.ToString();
+        }
     }
 
     

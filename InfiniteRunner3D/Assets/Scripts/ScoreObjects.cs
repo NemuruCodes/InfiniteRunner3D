@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ScoreObjects : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class ScoreObjects : MonoBehaviour
 
     private string obstacle;
 
+    //public UnityEvent obstaclePassed;
 
     private void OnTriggerEnter(Collider other)
     {

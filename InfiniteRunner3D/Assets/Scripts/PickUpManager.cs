@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using static UnityEngine.GraphicsBuffer;
 using TMPro;
+using UnityEngine.Events;
 
 public class PickUpManager : MonoBehaviour
 {
