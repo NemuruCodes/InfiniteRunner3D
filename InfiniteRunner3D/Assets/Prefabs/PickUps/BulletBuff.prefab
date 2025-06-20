@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5068516878423997524}
   - component: {fileID: 7413303106761885043}
   - component: {fileID: 2579087074522543283}
+  - component: {fileID: 5729375496785044973}
   m_Layer: 0
   m_Name: BulletBuff
   m_TagString: Untagged
@@ -117,7 +118,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4976060295213100178}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f099eb810afe2440a934623063fc153, type: 3}
   m_Name: 
@@ -149,3 +150,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5729375496785044973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976060295213100178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f92dac8d8788a4478b0283130221c43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupType: 0

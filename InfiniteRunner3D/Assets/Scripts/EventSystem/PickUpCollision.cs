@@ -1,16 +1,26 @@
 using UnityEngine;
 
+public enum PickupType
+{
+    Bullet,
+    Jump,
+    Shield,
+    Point
+}
 public class PickUpCollision : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public PickupType pickupType;
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
+        if (!other.CompareTag("Player")) return;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        switch (pickupType)
+        {
+            case PickupType.Bullet: GameEvents.Instance.BulletPicked(); break;
+            case PickupType.Jump: GameEvents.Instance.JumpPicked(); break;
+            case PickupType.Shield: GameEvents.Instance.ShieldPicked(); break;
+            case PickupType.Point: GameEvents.Instance.PointPicked(); break;
+        }
+        Destroy(gameObject);
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using static UnityEngine.Rendering.DebugUI;
 
 public class ScoreObjects : MonoBehaviour
 {
@@ -9,8 +10,43 @@ public class ScoreObjects : MonoBehaviour
 
     private string obstacle;
 
-    //public UnityEvent obstaclePassed;
+    private void OnEnable()
+    {
+        GameEvents.Instance.OnScorePoints += AddPoints;
+    }
 
+    private void OnDisable()
+    {
+        GameEvents.Instance.OnScorePoints -= AddPoints;
+    }
+
+    public void AddPoints(int amount)
+    {
+        pointManager.value += amount;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Obstacle") || other.CompareTag("Rocket"))
+        {
+            string obstacleName = other.name.ToLower();
+            int basePoints = 0;
+
+            if (obstacleName.Contains("crate01") || obstacleName.Contains("debri01"))
+                basePoints = _weakpoints;
+            else if (obstacleName.Contains("rocket"))
+                basePoints = _highpoints;
+            else if (obstacleName.Contains("scaffholding"))
+                basePoints = _medpoints;
+
+            if (basePoints > 0)
+            {
+                int totalPoints = PickUpManagerV2.IsPointBuffActive ? basePoints * 2 : basePoints;
+                GameEvents.Instance.ObstaclePassed(totalPoints);
+            }
+        }
+    }
+    /*
     private void OnTriggerEnter(Collider other)
     {
         
@@ -67,5 +103,5 @@ public class ScoreObjects : MonoBehaviour
             }
         }
     }
-           
+    */
 }

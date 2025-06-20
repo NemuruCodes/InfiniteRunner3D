@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -3264182643514526217}
   - component: {fileID: 1319398562155818650}
   - component: {fileID: -1171265089092577624}
+  - component: {fileID: -6540560666898793385}
   m_Layer: 0
   m_Name: AnotherBuff
   m_TagString: PickUp
@@ -130,7 +131,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2536008227884306091}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 162925fd53c5bb9429ef3521e16c2b47, type: 3}
   m_Name: 
@@ -147,3 +148,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3983b075f6456ee459fbfd2ba91aab08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6540560666898793385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2536008227884306091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f92dac8d8788a4478b0283130221c43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupType: 2
