@@ -15,7 +15,7 @@ public class SettingScript : MonoBehaviour
     public TMPro.TMP_Dropdown resolutionDropDown;
     public TMPro.TMP_Dropdown graphicsDropDown;
     Resolution[] resolutions;
-
+    //public int From { get; set; }
 
 
 
@@ -48,6 +48,8 @@ public class SettingScript : MonoBehaviour
 
         graphicsDropDown.value = QualitySettings.GetQualityLevel();
         graphicsDropDown.RefreshShownValue();
+
+
     }
 
 
@@ -74,6 +76,8 @@ public class SettingScript : MonoBehaviour
     {
         Screen.fullScreen = isFullScreen;
     }
+
+   
 
 
 }
