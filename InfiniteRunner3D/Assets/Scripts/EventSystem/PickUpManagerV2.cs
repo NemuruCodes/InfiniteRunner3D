@@ -17,6 +17,18 @@ public class PickUpManagerV2 : MonoBehaviour
 
     public static bool IsPointBuffActive { get; private set; }
 
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     private void OnEnable()
     {
         GameEvents.Instance.OnBulletPickup += HandleBulletPickup;
