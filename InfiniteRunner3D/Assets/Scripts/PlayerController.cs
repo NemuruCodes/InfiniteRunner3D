@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 
+
 public class PlayerController : MonoBehaviour
 {
     [Header("Lane Settings")]
@@ -37,7 +38,7 @@ public class PlayerController : MonoBehaviour
     public float jumpSpeed = 2;
     
 
-    private bool isAlive = true;
+    public static bool isAlive = true;
 
     
 
@@ -51,6 +52,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         targetPos = new Vector3(lanePosition[currLaneIndex], transform.position.y, transform.position.z);
+
+        
     }
 
    
@@ -174,7 +177,7 @@ public class PlayerController : MonoBehaviour
         
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-
+        
     }
     
     private void OnCollisionEnter(Collision collision)
@@ -182,17 +185,30 @@ public class PlayerController : MonoBehaviour
         
         if(collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("StartGround"))
         {
-            //Debug.Log("Jumpie");
+           
             isJumping = false;
+            
         }
         
-        if (collision.gameObject.tag == "Obstacle" || collision.gameObject.tag == "Rocket") 
+        
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Obstacle" || other.gameObject.tag == "Rocket")
         {
             Debug.Log("Hit");
             isAlive = false;
-        
+            playerSpeed = 0;
+            StartCoroutine(deathRoutine());
+
         }
     }
-   
 
+    private IEnumerator deathRoutine()
+    {
+
+        yield return new WaitForSeconds(1);
+
+        freezeGame.PlayerDeath();
+    }
 }

@@ -16,10 +16,18 @@ public class PickUpCollision : MonoBehaviour
 
         switch (pickupType)
         {
-            case PickupType.Bullet: GameEvents.Instance.BulletPicked(); break;
-            case PickupType.Jump: GameEvents.Instance.JumpPicked(); break;
-            case PickupType.Shield: GameEvents.Instance.ShieldPicked(); break;
-            case PickupType.Point: GameEvents.Instance.PointPicked(); break;
+            case PickupType.Bullet: GameEvents.Instance.BulletPicked();
+                SoundManager.PlaySound(SoundType.SHOOT, 0.8f);
+                break;
+            case PickupType.Jump: GameEvents.Instance.JumpPicked();
+                SoundManager.PlaySound(SoundType.PICKUP, 0.8f);
+                break;
+            case PickupType.Shield: GameEvents.Instance.ShieldPicked();
+                SoundManager.PlaySound(SoundType.SHIELD);
+                break;
+            case PickupType.Point: GameEvents.Instance.PointPicked();
+                SoundManager.PlaySound(SoundType.PICKUP, 0.8f);
+                break;
         }
         Destroy(gameObject);
     }

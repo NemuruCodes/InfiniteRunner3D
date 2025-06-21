@@ -14,6 +14,8 @@ public class Restart : MonoBehaviour
         pointManager.value = 0;
 
         Debug.Log("Restart");
+
+        PlayerController.isAlive = true;
     }
 
 }

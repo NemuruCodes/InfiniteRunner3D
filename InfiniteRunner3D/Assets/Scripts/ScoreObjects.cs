@@ -46,6 +46,8 @@ public class ScoreObjects : MonoBehaviour
             }
         }
     }
+
+
     /*
     private void OnTriggerEnter(Collider other)
     {

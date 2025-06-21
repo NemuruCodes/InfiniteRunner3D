@@ -42,6 +42,8 @@ public class BossHealth : MonoBehaviour
         BossManager.isAlive = false;
         Destroy(transform.parent.gameObject);
         pointManager.value += BossPoints;
+
+
     }
 
 }
