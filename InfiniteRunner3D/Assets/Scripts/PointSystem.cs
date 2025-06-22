@@ -8,10 +8,15 @@ using TMPro;
 public class PointSystem : MonoBehaviour
     
 {
-    [SerializeField] private GameObject scoreDisplay;
+    public static PointSystem Instance { get; private set; }
 
+    [SerializeField] private GameObject scoreDisplay;
+    [SerializeField] private GameObject BossesDefeated;
 
     private TextMeshProUGUI valText;
+    private TextMeshProUGUI bossText;
+
+
     void Start()
     {
         /*
@@ -28,7 +33,15 @@ public class PointSystem : MonoBehaviour
             valText.text = PointManager.Instance.value.ToString();
         }
 
+        if(BossesDefeated != null)
+        {
+            bossText = BossesDefeated.GetComponent<TextMeshProUGUI>();
+        }
 
+        if (bossText != null)
+        {
+            bossText.text = PointManager.Instance.bossesDefeated.ToString();
+        }
     }
 
     // Update is called once per frame
@@ -39,6 +52,10 @@ public class PointSystem : MonoBehaviour
         if (valText != null)
         {
             valText.text = PointManager.Instance.value.ToString();
+        }
+        if (bossText != null)
+        {
+            bossText.text = PointManager.Instance.bossesDefeated.ToString();
         }
     }
 

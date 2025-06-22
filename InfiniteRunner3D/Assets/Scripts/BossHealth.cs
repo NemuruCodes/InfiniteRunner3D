@@ -6,7 +6,7 @@ public class BossHealth : MonoBehaviour
     Rigidbody rb;
     float MaxHealth = 10f;
     float Health;
-    int BossPoints = 50;
+    
 
     public PointManager pointManager = PointManager.Instance;
 
@@ -31,18 +31,18 @@ public class BossHealth : MonoBehaviour
         healthbar.UpdateHealthBar(Health, MaxHealth);
         if (Health <= 0)
         {
-            Destroy();
+            Die();
         }
     }
 
-    public void Destroy()
+    public void Die()
     {
         GameEvents.Instance.BossDefeated();
 
         BossManager.isAlive = false;
+        
         Destroy(transform.parent.gameObject);
-        pointManager.value += BossPoints;
-
+        
 
     }
 

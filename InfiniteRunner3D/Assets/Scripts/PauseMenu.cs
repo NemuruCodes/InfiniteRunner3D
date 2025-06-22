@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
 
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject UIPanel;
+    [SerializeField] private GameObject BossKillUI;
 
     private bool isPaused = false;
 
@@ -58,6 +59,7 @@ public class PauseMenu : MonoBehaviour
         {
             pausePanel.SetActive(true);
             UIPanel.SetActive(false);
+            BossKillUI.SetActive(false);
             isPaused = true;
             FreezeGame();
         }
@@ -66,6 +68,7 @@ public class PauseMenu : MonoBehaviour
         {
             pausePanel.SetActive(false);
             UIPanel.SetActive(true);
+            BossKillUI.SetActive(true);
             isPaused = false;
             UnFreezeGame();
         }

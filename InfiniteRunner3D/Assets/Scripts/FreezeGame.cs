@@ -2,29 +2,34 @@ using UnityEngine;
 
 public class FreezeGame : MonoBehaviour
 {
+    public static FreezeGame Instance { get; private set; }
+
     [SerializeField] private GameObject EndMenu;
     [SerializeField] private GameObject TextUI;
     [SerializeField] private GameObject Score;
 
-    //[SerializeField] private GameObject BossScore;
+    [SerializeField] private GameObject BossScore;
+    [SerializeField] private GameObject BossUI;
 
     [SerializeField] private GameObject PauseMenu;
 
     public Vector3 targetPosition;
     public float speed = 5f;
 
-    //public Vector3 targetPosition2;
+    public Vector3 targetPosition2;
 
-
+    
     public void PlayerDeath()
     {
             
             EndMenu.SetActive(true);
 
             TextUI.transform.position = Vector3.Lerp(TextUI.transform.position, targetPosition, speed * 1);
-            //BossScore.transform.position = Vector3.Lerp(BossScore.transform.position, targetPosition2, speed * 1);
+
+            BossScore.transform.position = Vector3.Lerp(BossScore.transform.position, targetPosition2, speed * 1);
 
             Score.SetActive(false);
+            BossUI.SetActive(false);
 
             Time.timeScale = 0;
 

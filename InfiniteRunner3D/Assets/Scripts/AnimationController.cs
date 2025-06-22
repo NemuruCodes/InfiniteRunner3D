@@ -34,11 +34,13 @@ public class AnimationController : MonoBehaviour
         {
             animator.SetBool("Run", true);
             animator.SetBool("Alive", true);
+
+            if (Shoot.BulletChecked == true)
+            {
+                animator.SetTrigger("Shoot");
+            }
         }
-        else if (Shoot.BulletChecked == true)
-        {
-            animator.SetTrigger("Shoot");
-        }
+       
         
     }
 }

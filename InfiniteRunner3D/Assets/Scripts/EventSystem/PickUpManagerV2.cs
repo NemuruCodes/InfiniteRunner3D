@@ -49,7 +49,6 @@ public class PickUpManagerV2 : MonoBehaviour
 
     private void HandleShieldPickup()
     {
-        Debug.Log("Sheild?");
         StartCoroutine(ShieldRoutine());
     }
 
@@ -78,6 +77,7 @@ public class PickUpManagerV2 : MonoBehaviour
 
     private IEnumerator ShieldRoutine()
     {
+        duration = 5;
         pickUpUI.ShowBuff("Shield", duration);
         Shield.SetActive(true);
         yield return new WaitForSeconds(duration);
@@ -86,6 +86,7 @@ public class PickUpManagerV2 : MonoBehaviour
 
     private IEnumerator PointRoutine()
     {
+        duration = 5;
         pickUpUI.ShowBuff("X2 Points", duration);
         IsPointBuffActive = true;
         yield return new WaitForSeconds(duration);
