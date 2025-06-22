@@ -5595,7 +5595,6 @@ MonoBehaviour:
   - {fileID: 3444991913892925245, guid: 653e78aff16c9a34cb0c5d3854f3725b, type: 3}
   - {fileID: 8532023346764891487, guid: 154b9a01feebf6b4182a7048920122e6, type: 3}
   - {fileID: 7465827535511082826, guid: f02677aa39a1caa4b8db73a2202226f9, type: 3}
-  - {fileID: 6305624625886621165, guid: 4dd23c4148466844fa857590e1e04962, type: 3}
   - {fileID: 6065208602654246021, guid: 911b725c5dd47404c84ed3d4b925b9d8, type: 3}
   - {fileID: 6157313300629880800, guid: 85f0dde5db2fd294c9a56d8f9d5d6b8c, type: 3}
   - {fileID: 1562786352333806379, guid: e0a8ddd912cf80f4b94dcc572774f943, type: 3}
@@ -5603,10 +5602,9 @@ MonoBehaviour:
   - 0.6
   - 0.6
   - 0.6
-  - 0
-  - 0.31
   - 0.5
-  - 0.25
+  - 0.2
+  - 0.5
   spawnY: 3.5
 --- !u!4 &1836414711
 Transform:
