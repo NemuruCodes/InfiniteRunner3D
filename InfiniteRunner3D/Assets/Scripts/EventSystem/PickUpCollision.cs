@@ -17,7 +17,7 @@ public class PickUpCollision : MonoBehaviour
         switch (pickupType)
         {
             case PickupType.Bullet: GameEvents.Instance.BulletPicked();
-                SoundManager.PlaySound(SoundType.SHOOT, 0.8f);
+                //SoundManager.PlaySound(SoundType.SHOOT, 0.8f);
                 break;
             case PickupType.Jump: GameEvents.Instance.JumpPicked();
                 SoundManager.PlaySound(SoundType.PICKUP, 0.8f);
