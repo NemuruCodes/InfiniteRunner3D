@@ -9,6 +9,8 @@ public class PointManager : MonoBehaviour
     public int value = 0;
     public int bossesDefeated = 0;
     public bool Spawned = false;
+
+    public bool nextLevel = false;
     //public int bossTracker = 0;
 
     public int bossThreshold = 100;
@@ -44,16 +46,19 @@ public class PointManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    /*
+    
     private void OnEnable()
     {
         GameEvents.Instance.OnBossDefeated += HandleBossDefeated;
     }
     private void OnDisable()
     {
-        GameEvents.Instance.OnBossDefeated -= HandleBossDefeated;
+        if (GameEvents.Instance != null)
+            GameEvents.Instance.OnBossDefeated -= HandleBossDefeated;
     }
-    */
+
+
+    
     private void Update()
     {
        
@@ -65,17 +70,22 @@ public class PointManager : MonoBehaviour
             Spawned = true;
 
             nextBossTrigger += bossThreshold;
+            nextLevel = false;
         }
 
-       // SpawnBoss.BossCheck = false;
-       // Spawned = false;
+       
 
     }
-
+    
     private void HandleBossDefeated()
     {
+        Debug.Log("Boss defeated. Resetting spawn flag.");
         value += 50;
         bossesDefeated++;
+
+        Spawned = false;
+        
+        nextLevel = true;
     }
 
     /*

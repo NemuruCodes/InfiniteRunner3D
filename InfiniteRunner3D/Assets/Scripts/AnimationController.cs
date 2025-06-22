@@ -19,7 +19,7 @@ public class AnimationController : MonoBehaviour
 
     private void playAnimations()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             animator.SetTrigger("Jump");
             animator.SetBool("Run", false);

@@ -14,20 +14,63 @@ public class GameManager : MonoBehaviour
     private Vector3 spawnPos;
     public SpawnObstaclesOnTiles objectSpawner;
 
+    PointManager pointManager;
+
+    public bool Transitioned = false;
+
     void Start()
     {
         spawnPos = new Vector3(0, 0, FirstSpawn);
         StartCoroutine(SpawnTiles());
     }
 
+    private void Update()
+    {
+        if(pointManager.nextLevel == true)
+        {
+            StopCoroutine(SpawnTiles());
+            StartCoroutine(SpawnTiles2());
+            pointManager.nextLevel = false;
+        }
+    }
     IEnumerator SpawnTiles()
     {
         while (true)
         {
-            yield return new WaitForSeconds(1f);
-            GameObject newTile = Instantiate(tilePrefab, spawnPos, Quaternion.identity);
-            objectSpawner.SpawnObjectsOnTile(newTile.transform);
-            spawnPos.z += tileSpacing;
+           
+                yield return new WaitForSeconds(1f);
+                GameObject newTile = Instantiate(tilePrefab, spawnPos, Quaternion.identity);
+                objectSpawner.SpawnObjectsOnTile(newTile.transform);
+                spawnPos.z += tileSpacing;
+            
+    
+        }
+    }
+
+    IEnumerator SpawnTiles2()
+    {
+        while (true)
+        {
+                
+
+                if(Transitioned == false)
+                {
+                    yield return new WaitForSeconds(1f);
+                    GameObject newTile = Instantiate(trans1, spawnPos, Quaternion.identity);
+                    objectSpawner.SpawnObjectsOnTile(newTile.transform);
+                    spawnPos.z += tileSpacing;
+                    Transitioned = true;
+                }
+                else
+                {
+                    yield return new WaitForSeconds(1f);    
+                    GameObject newTile = Instantiate(tilePrefab2, spawnPos, Quaternion.identity);
+                    objectSpawner.SpawnObjectsOnTile(newTile.transform);
+                    spawnPos.z += tileSpacing;
+                }
+
+            
+    
         }
     }
 
