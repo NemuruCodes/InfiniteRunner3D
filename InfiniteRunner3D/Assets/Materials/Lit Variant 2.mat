@@ -12,9 +12,7 @@ Material:
   m_Parent: {fileID: 2100000, guid: bc17a8ef1d607654a8ad81aba725cc5f, type: 2}
   m_ModifiedSerializedProperties: 26
   m_ValidKeywords:
-  - _ALPHAMODULATE_ON
   - _EMISSION
-  - _SPECULAR_SETUP
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
   m_LightmapFlags: 2
@@ -34,23 +32,23 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
-    - _Blend: 3
+    - _Blend: 1
     - _Cull: 2
     - _Cutoff: 1
-    - _DstBlend: 0
-    - _DstBlendAlpha: 1
-    - _Metallic: 0
+    - _DstBlend: 10
+    - _DstBlendAlpha: 10
+    - _Metallic: 1
     - _ReceiveShadows: 1
-    - _Smoothness: 0.789
-    - _SrcBlend: 2
-    - _SrcBlendAlpha: 0
+    - _Smoothness: 1
+    - _SrcBlend: 1
+    - _SrcBlendAlpha: 1
     - _Surface: 1
-    - _WorkflowMode: 0
+    - _WorkflowMode: 1
     - _ZWrite: 0
     m_Colors:
-    - _BaseColor: {r: 0, g: 0.490196, b: 1, a: 1}
-    - _Color: {r: 0, g: 0.490196, b: 1, a: 1}
-    - _EmissionColor: {r: 0.023541493, g: 0.18074131, b: 1.7824343, a: 1}
+    - _BaseColor: {r: 0, g: 0.490196, b: 1, a: 0}
+    - _Color: {r: 0, g: 0.490196, b: 1, a: 0}
+    - _EmissionColor: {r: 0.023541491, g: 0, b: 1.7824342, a: 1}
     - _SpecColor: {r: 0.15686274, g: 0.6628618, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

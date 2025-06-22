@@ -19,7 +19,7 @@ Material:
   m_InvalidKeywords: []
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 1
+  m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3000
   stringTagMap:
     RenderType: Transparent
@@ -34,7 +34,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Blend: 0
-    - _Cull: 0
+    - _Cull: 2
     - _DstBlend: 10
     - _DstBlendAlpha: 10
     - _Metallic: 0

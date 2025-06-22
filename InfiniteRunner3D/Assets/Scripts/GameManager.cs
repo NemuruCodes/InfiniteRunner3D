@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     private Vector3 spawnPos;
     public SpawnObstaclesOnTiles objectSpawner;
 
-    PointManager pointManager;
+    //PointManager pointManager;
 
     public bool Transitioned = false;
 
@@ -26,11 +26,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(pointManager.nextLevel == true)
+        if(PointManager.Instance.nextLevel == true)
         {
             StopCoroutine(SpawnTiles());
             StartCoroutine(SpawnTiles2());
-            pointManager.nextLevel = false;
+            PointManager.Instance.nextLevel = false;
         }
     }
     IEnumerator SpawnTiles()
