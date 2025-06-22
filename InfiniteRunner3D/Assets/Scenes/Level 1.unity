@@ -6546,9 +6546,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 4106015954850772600, guid: 215ac980a1dfdd142b90167ef87186eb, type: 3}
-  tilePrefab2: {fileID: 4106015954850772600, guid: 215ac980a1dfdd142b90167ef87186eb, type: 3}
-  trans1: {fileID: 4106015954850772600, guid: 215ac980a1dfdd142b90167ef87186eb, type: 3}
-  trans2: {fileID: 4106015954850772600, guid: 215ac980a1dfdd142b90167ef87186eb, type: 3}
+  tilePrefab2: {fileID: 2805287156738505076, guid: 2d472e10dd4d51a409b9432c2d59260d, type: 3}
+  trans1: {fileID: 3521580826530962441, guid: 40c3767ab9e12ac469e48bbdffa6a329, type: 3}
+  trans2: {fileID: 4395520086009131069, guid: 3eb9d07e6082a7545b2c4263a28280cf, type: 3}
   tileSpacing: 12
   FirstSpawn: 120
   objectSpawner: {fileID: 1836414710}
