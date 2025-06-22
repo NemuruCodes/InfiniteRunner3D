@@ -35,7 +35,7 @@ public class SoundManager : MonoBehaviour
     {
         instance.audioSource.PlayOneShot(instance.soundList[(int)sound], volume);
     }
-    /*
+
     public static void PlaySoundLoop(SoundType sound, float volume = 1f)
     {
         AudioClip clip = instance.soundList[(int)sound];
@@ -53,5 +53,4 @@ public class SoundManager : MonoBehaviour
         instance.audioSource.loop = false;
         instance.audioSource.clip = null;
     }
-    */
 }

@@ -53,7 +53,8 @@ public class PlayerController : MonoBehaviour
 
         targetPos = new Vector3(lanePosition[currLaneIndex], transform.position.y, transform.position.z);
 
-        
+        SoundManager.PlaySoundLoop(SoundType.FACTORY);
+
     }
 
    

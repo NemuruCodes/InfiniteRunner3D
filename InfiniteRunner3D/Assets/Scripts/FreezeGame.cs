@@ -32,6 +32,7 @@ public class FreezeGame : MonoBehaviour
             BossUI.SetActive(false);
 
             Time.timeScale = 0;
+        SoundManager.StopLoopingSound(SoundType.FACTORY);
 
     }
     /*
@@ -59,8 +60,8 @@ public class FreezeGame : MonoBehaviour
     {
         PauseMenu.SetActive(true);
 
-        Time.timeScale = 0; 
-
+        Time.timeScale = 0;
+        SoundManager.StopLoopingSound(SoundType.FACTORY);
 
     } 
 
@@ -69,5 +70,7 @@ public class FreezeGame : MonoBehaviour
         PauseMenu.SetActive(false);
 
         Time.timeScale = 1;
+
+        SoundManager.PlaySoundLoop(SoundType.FACTORY);
     }
 }

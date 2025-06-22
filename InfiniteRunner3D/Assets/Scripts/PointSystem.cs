@@ -33,6 +33,7 @@ public class PointSystem : MonoBehaviour
             valText.text = PointManager.Instance.value.ToString();
         }
 
+
         if(BossesDefeated != null)
         {
             bossText = BossesDefeated.GetComponent<TextMeshProUGUI>();

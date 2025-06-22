@@ -5409,7 +5409,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1417397171}
   m_Layer: 0
-  m_Name: PointManger
+  m_Name: BossManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7160,8 +7160,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 4106015954850772600, guid: 215ac980a1dfdd142b90167ef87186eb, type: 3}
   tilePrefab2: {fileID: 0}
-  trans1to2: {fileID: 0}
-  trans2to1: {fileID: 0}
+  trans1: {fileID: 0}
+  trans2: {fileID: 0}
   tileSpacing: 12
   FirstSpawn: 120
   objectSpawner: {fileID: 1836414710}

@@ -21,7 +21,7 @@ public class BossManager : MonoBehaviour
     public GameObject BulletPickUpPrefab;
 
 
-    int BossPoints = 50;
+    //int BossPoints = 50;
     public PointManager pointManager = PointManager.Instance;
 
     void Start()
@@ -40,8 +40,8 @@ public class BossManager : MonoBehaviour
         //  StartCoroutine(BossController());
         //  BossStart = false;
         //}
-       
         
+
     }
 
     IEnumerator BossController()
@@ -50,7 +50,7 @@ public class BossManager : MonoBehaviour
         {
             yield return StartCoroutine(RandomAttackAmount());
         }
-        Defeated();
+        
     }
 
     IEnumerator RandomAttackAmount()
@@ -365,13 +365,5 @@ public class BossManager : MonoBehaviour
         }
     }
 
-    public void Defeated()
-    {
-        if (isAlive == false)
-        {
-            pointManager.value += BossPoints;
-            pointManager.bossesDefeated++;
-        }
-       
-    }
+   
 }

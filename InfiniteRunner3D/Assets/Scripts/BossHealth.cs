@@ -37,6 +37,8 @@ public class BossHealth : MonoBehaviour
 
     public void Die()
     {
+        //boss dead
+
         GameEvents.Instance.BossDefeated();
 
         BossManager.isAlive = false;

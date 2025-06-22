@@ -6,8 +6,8 @@ public class GameManager : MonoBehaviour
     public GameObject tilePrefab;
     public GameObject tilePrefab2;
 
-    public GameObject trans1to2;
-    public GameObject trans2to1;
+    public GameObject trans1;
+    public GameObject trans2;
 
     public float tileSpacing = 12f;
     public float FirstSpawn = 108f;
@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
             spawnPos.z += tileSpacing;
         }
     }
+
     /*
     public Transform tileObject;
     private Vector3 spawnNextTile;

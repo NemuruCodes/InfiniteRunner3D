@@ -38,18 +38,26 @@ public class PointManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-
         }
         else
         {
             Destroy(gameObject);
         }
     }
-    
+    /*
+    private void OnEnable()
+    {
+        GameEvents.Instance.OnBossDefeated += HandleBossDefeated;
+    }
+    private void OnDisable()
+    {
+        GameEvents.Instance.OnBossDefeated -= HandleBossDefeated;
+    }
+    */
     private void Update()
     {
        
-        if (value == nextBossTrigger && !Spawned )
+        if (value >= nextBossTrigger && !Spawned )
         {
             GameEvents.Instance.BossSpawned();
 
@@ -59,11 +67,17 @@ public class PointManager : MonoBehaviour
             nextBossTrigger += bossThreshold;
         }
 
-        SpawnBoss.BossCheck = false;
-        Spawned = false;
+       // SpawnBoss.BossCheck = false;
+       // Spawned = false;
 
     }
-    
+
+    private void HandleBossDefeated()
+    {
+        value += 50;
+        bossesDefeated++;
+    }
+
     /*
     private void Update()
     {
