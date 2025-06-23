@@ -27,15 +27,14 @@ public class ScoreObjects : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Obstacle") || other.CompareTag("Rocket"))
+        if (other.CompareTag("Obstacle") )
         {
             string obstacleName = other.name.ToLower();
             int basePoints = 0;
 
             if (obstacleName.Contains("crate01") || obstacleName.Contains("debri01"))
                 basePoints = _weakpoints;
-            else if (obstacleName.Contains("rocket"))
-                basePoints = _highpoints;
+            
             else if (obstacleName.Contains("scaffholding"))
                 basePoints = _medpoints;
 

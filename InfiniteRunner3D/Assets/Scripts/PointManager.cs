@@ -14,13 +14,14 @@ public class PointManager : MonoBehaviour
     //public int bossTracker = 0;
 
     public int bossThreshold = 100;
-    public int levelThreshold = 400;
+    //public int levelThreshold = 400;
     public int nextBossTrigger = 200;
 
     //private bool bossSpawned = false;
 
     //public event Action OnBossDefeated;
     //public event Action OnBossSpawned;
+    int Level = 1;
 
     private void Awake()
     {
@@ -66,9 +67,25 @@ public class PointManager : MonoBehaviour
         {
             GameEvents.Instance.BossSpawned();
 
-            SpawnBoss.BossCheck = true;
-            Spawned = true;
+            
 
+            if (Level == 1)
+            {
+                SpawnBoss.BossCheck = true;
+                SpawnBoss.LevelCheck = 1;
+                Level++;
+            }
+            else if (Level == 2)
+            {
+
+                SpawnBoss.BossCheck = true;
+                SpawnBoss.LevelCheck = 2;
+                Level--;
+
+
+            }
+
+            Spawned = true;
             nextBossTrigger += bossThreshold;
             nextLevel = false;
         }

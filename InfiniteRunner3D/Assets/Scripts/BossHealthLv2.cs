@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class BossHealth : MonoBehaviour
+public class BossHealthLv2 : MonoBehaviour
 {
     Rigidbody rb;
     float MaxHealth = 10f;
@@ -41,7 +41,7 @@ public class BossHealth : MonoBehaviour
 
         GameEvents.Instance.BossDefeated();
 
-        BossManager.isAlive = false;
+        //BossManager.isAlive = false;
         BossManagerLv2.isAlive = false;
         
         Destroy(transform.parent.gameObject);
