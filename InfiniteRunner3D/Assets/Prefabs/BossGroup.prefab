@@ -203,7 +203,7 @@ Transform:
   m_GameObject: {fileID: 2505679016265148642}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3, y: 0, z: -2}
+  m_LocalPosition: {x: -3, y: 0.53, z: -0.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -345,6 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4257101fee77d15439c3a7a0b6167e93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointManager: {fileID: 0}
   healthbar: {fileID: 0}
 --- !u!1 &3058525731857822595
 GameObject:
@@ -373,7 +374,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3058525731857822595}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1.59}
   m_LocalScale: {x: 0.005, y: 0.02, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -382,7 +383,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.667}
+  m_AnchoredPosition: {x: 0, y: 0.688}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2588521153690002259
@@ -473,7 +474,7 @@ Transform:
   m_GameObject: {fileID: 3379202611595366041}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3, y: 0, z: -2}
+  m_LocalPosition: {x: 3, y: 0.53000003, z: -0.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -504,7 +505,7 @@ Transform:
   m_GameObject: {fileID: 5868423475346840255}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2}
+  m_LocalPosition: {x: 0, y: 0.53000003, z: -0.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -537,7 +538,7 @@ Transform:
   m_GameObject: {fileID: 5881658318115214141}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -619,8 +620,8 @@ Transform:
   m_GameObject: {fileID: 6551429633618564931}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.044666857, y: 0.6, z: 31.34}
-  m_LocalScale: {x: 11.936925, y: 1.3847497, z: 40.04298}
+  m_LocalPosition: {x: -0.044666857, y: -0.5, z: 31.34}
+  m_LocalScale: {x: 11.936925, y: 0.5, z: 63.730007}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2491002981584084010}
@@ -761,10 +762,11 @@ MonoBehaviour:
   RightAttackSpawn: {fileID: 7673526595531252699}
   AttackSpeed: 10
   WideAttackPrefab: {fileID: 7341227461735226242, guid: 9683fba46ae50f64a9e947a2fa8bab8d, type: 3}
-  TallAttackPrefab: {fileID: 8148920777012932212, guid: 46cb174d37acf114087ae92e80af2e4f, type: 3}
-  LineAttackPrefab: {fileID: 3206509902065961455, guid: e807aca3e710c864d99cadf43e7d6505, type: 3}
+  SlowRocketPrefab: {fileID: 4787642296952522936, guid: 4dd23c4148466844fa857590e1e04962, type: 3}
+  FastRocketPrefab: {fileID: 4787642296952522936, guid: 23132a587b875b8439f2712b45712cfe, type: 3}
   LineWarningAttackPrefab: {fileID: 9015028529340376272, guid: e39efe5346ba36844a073386d3bbde87, type: 3}
   BulletPickUpPrefab: {fileID: 4976060295213100178, guid: 17cea8315f2a9a645ba31b7dd92e313b, type: 3}
+  pointManager: {fileID: 0}
 --- !u!1 &7595812755582497097
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,7 +892,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 32efaab4b7b20784f874d1337eb7b257, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.05
+      value: 0.55
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 32efaab4b7b20784f874d1337eb7b257, type: 3}
       propertyPath: m_LocalPosition.z
@@ -924,6 +926,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 32efaab4b7b20784f874d1337eb7b257, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 64f5db86e168d1f4da8bb3e379e27f7b, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 32efaab4b7b20784f874d1337eb7b257, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3199a664da2dca040ba36675ebaa2864, type: 2}
     - target: {fileID: 919132149155446097, guid: 32efaab4b7b20784f874d1337eb7b257, type: 3}
       propertyPath: m_Name
       value: Boss (1)

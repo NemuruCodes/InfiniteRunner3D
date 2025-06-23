@@ -9,13 +9,10 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Lit Variant 2
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_Parent: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_Parent: {fileID: 2100000, guid: bc17a8ef1d607654a8ad81aba725cc5f, type: 2}
   m_ModifiedSerializedProperties: 26
   m_ValidKeywords:
-  - _ALPHAPREMULTIPLY_ON
   - _EMISSION
-  - _RECEIVE_SHADOWS_OFF
-  - _SPECULAR_SETUP
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
   m_LightmapFlags: 2
@@ -34,20 +31,25 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
+    - _AlphaClip: 0
+    - _Blend: 1
     - _Cull: 2
+    - _Cutoff: 1
     - _DstBlend: 10
     - _DstBlendAlpha: 10
-    - _Metallic: 0
-    - _ReceiveShadows: 0
+    - _Metallic: 1
+    - _ReceiveShadows: 1
     - _Smoothness: 1
+    - _SrcBlend: 1
+    - _SrcBlendAlpha: 1
     - _Surface: 1
-    - _WorkflowMode: 0
+    - _WorkflowMode: 1
     - _ZWrite: 0
     m_Colors:
-    - _BaseColor: {r: 0, g: 0.43576622, b: 1, a: 1}
-    - _Color: {r: 0, g: 0.4357662, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0.08680344, b: 4, a: 1}
-    - _SpecColor: {r: 0, g: 0.11699772, b: 1, a: 1}
+    - _BaseColor: {r: 0, g: 0.490196, b: 1, a: 0}
+    - _Color: {r: 0, g: 0.490196, b: 1, a: 0}
+    - _EmissionColor: {r: 0.023541491, g: 0, b: 1.7824342, a: 1}
+    - _SpecColor: {r: 0.15686274, g: 0.6628618, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &2365080442834271943

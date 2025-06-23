@@ -15,29 +15,33 @@ public class BossManager : MonoBehaviour
     public float AttackSpeed;
 
     public GameObject WideAttackPrefab;
-    public GameObject TallAttackPrefab;
-    public GameObject LineAttackPrefab;
+    public GameObject SlowRocketPrefab;
+    public GameObject FastRocketPrefab;
     public GameObject LineWarningAttackPrefab;
     public GameObject BulletPickUpPrefab;
 
 
+    //int BossPoints = 50;
+    public PointManager pointManager = PointManager.Instance;
+
     void Start()
     {
-        //Debug.Log("start");
+        Debug.Log("start");
         StartCoroutine(BossController());
     }
 
     // Update is called once per frame
     void Update()
     {
-       //Debug.Log(BossStart);
-       //if (BossStart)
+        //Debug.Log(BossStart);
+        //if (BossStart)
         //{
-            //Debug.Log("start");
-         //  StartCoroutine(BossController());
-          //  BossStart = false;
+        //Debug.Log("start");
+        //  StartCoroutine(BossController());
+        //  BossStart = false;
         //}
         
+
     }
 
     IEnumerator BossController()
@@ -46,6 +50,7 @@ public class BossManager : MonoBehaviour
         {
             yield return StartCoroutine(RandomAttackAmount());
         }
+        
     }
 
     IEnumerator RandomAttackAmount()
@@ -57,29 +62,31 @@ public class BossManager : MonoBehaviour
                 yield return new WaitForSeconds(5f);
                 First = false;
             }
-            //Debug.Log("Time");
+            Debug.Log("Time");
             yield return new WaitForSeconds(3f);
 
-            // Randomly pick a number between 0 and 1
-            int randomAmount = Random.Range(1, 4); // 1 or 2
+            if (!Pickup)
+            {
+                int randomAmount = Random.Range(1, 3); 
 
-            if (randomAmount == 1 && !Pickup)
-            {
-                // Debug.Log("Time2");
-                RandomAttackType(1);
-                Pickup = true;
-            }
-            else if (randomAmount == 2 && !Pickup)
-            {
-                //Debug.Log("Time3");
-                RandomAttackType(2);
-                Pickup = true;
-            }
-            else if (randomAmount == 3 && !Pickup)
-            {
-                //Debug.Log("Time4");
-                RandomAttackType(3);
-                Pickup = true;
+                if (randomAmount == 1 )
+                {
+                    // Debug.Log("Time2");
+                    RandomAttackType(1);
+                    Pickup = true;
+                }
+                else if (randomAmount == 2 )
+                {
+                    //Debug.Log("Time3");
+                    RandomAttackType(2);
+                    Pickup = true;
+                }
+                /* else if (randomAmount == 3 )
+                 {
+                     //Debug.Log("Time4");
+                     RandomAttackType(3);
+                     Pickup = true;
+                 }*/
             }
 
             else if (Pickup)
@@ -95,7 +102,7 @@ public class BossManager : MonoBehaviour
 
     void RandomAttackType(int Type)
     {
-        if (Type == 1)
+        /*if (Type == 1)
         {
 
             //Debug.Log("Wide");
@@ -109,16 +116,16 @@ public class BossManager : MonoBehaviour
 
 
 
-        }
-        else if (Type == 2)
+        }*/
+        if (Type == 1)
         {
-            //Debug.Log("Type 2");
+            Debug.Log("Type 2");
             int randomAttack = Random.Range(1, 4);
 
             switch (randomAttack)
             {
                 case 1:
-                    //Debug.Log("RanSwitch2,1");
+                    Debug.Log("RanSwitch2,1");
 
                     int secondRandom = Random.Range(1, 3); 
 
@@ -136,7 +143,7 @@ public class BossManager : MonoBehaviour
                     break;
 
                 case 2:
-                    //Debug.Log("RanSwitch2,2");
+                    Debug.Log("RanSwitch2,2");
 
                     secondRandom = Random.Range(1, 3);
 
@@ -155,7 +162,7 @@ public class BossManager : MonoBehaviour
 
 
                 case 3:
-                    //Debug.Log("RanSwitch2,3");
+                    Debug.Log("RanSwitch2,3");
 
                     secondRandom = Random.Range(1, 3);
 
@@ -177,15 +184,15 @@ public class BossManager : MonoBehaviour
         }
 
 
-        else if (Type == 3)
+        else if (Type == 2)
         {
-            //Debug.Log("Type 3");
+            Debug.Log("Type 3");
             int randomAttack = Random.Range(1, 4);
 
             switch (randomAttack)
             {
                 case 1:
-                    //Debug.Log("RanSwitch3,1");
+                    Debug.Log("RanSwitch3,1");
                     //Debug.Log("Case 1 triggered");
 
                     int secondRandom = Random.Range(1, 3);
@@ -204,7 +211,7 @@ public class BossManager : MonoBehaviour
                     break;
 
                 case 2:
-                    //Debug.Log("RanSwitch3,2");
+                    Debug.Log("RanSwitch3,2");
 
                     secondRandom = Random.Range(1, 3);
 
@@ -223,7 +230,7 @@ public class BossManager : MonoBehaviour
 
 
                 case 3:
-                    //Debug.Log("RanSwitch3,3");
+                    Debug.Log("RanSwitch3,3");
 
                     secondRandom = Random.Range(1, 3);
 
@@ -280,8 +287,8 @@ public class BossManager : MonoBehaviour
         if (Type == 1)
         {
             Vector3 AttackSpawnL = LeftAttackSpawn.position + new Vector3(0, 0, -2);
-            GameObject TallAttack = Instantiate(TallAttackPrefab, AttackSpawnL, Quaternion.identity);
-            TallAttack.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, -10), ForceMode.Impulse);
+            GameObject TallAttack = Instantiate(SlowRocketPrefab, AttackSpawnL, Quaternion.identity);
+            //TallAttack.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, -10), ForceMode.Impulse);
             yield return new WaitForSeconds(1f);
         }
         else if (Type == 2)
@@ -294,9 +301,9 @@ public class BossManager : MonoBehaviour
             yield return new WaitForSeconds(2f);
 
            // Debug.Log("AttackLine");
-            Vector3 AttackSpawnL2 = LeftAttackSpawn.position + new Vector3(0, 0, -20);
-            GameObject LineAttack = Instantiate(LineAttackPrefab, AttackSpawnL2, Quaternion.identity);
-            LineAttack.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 7.9f), ForceMode.Impulse);
+            Vector3 AttackSpawnL2 = LeftAttackSpawn.position + new Vector3(0, 0, -2);
+            GameObject LineAttack = Instantiate(FastRocketPrefab, AttackSpawnL2, Quaternion.identity);
+           // LineAttack.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 7.9f), ForceMode.Impulse);
 
             yield return new WaitForSeconds(10f);
         }
@@ -309,8 +316,8 @@ public class BossManager : MonoBehaviour
         if (Type == 1)
         {
             Vector3 AttackSpawnM = MidAttackSpawn.position + new Vector3(0, 0, -2);
-            GameObject TallAttack = Instantiate(TallAttackPrefab, AttackSpawnM, Quaternion.identity);
-            TallAttack.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, -10), ForceMode.Impulse);
+            GameObject TallAttack = Instantiate(SlowRocketPrefab, AttackSpawnM, Quaternion.identity);
+            //TallAttack.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, -10), ForceMode.Impulse);
             yield return new WaitForSeconds(1f);
         }
         else if (Type == 2)
@@ -323,9 +330,9 @@ public class BossManager : MonoBehaviour
             yield return new WaitForSeconds(2f);
 
            // Debug.Log("AttackLine");
-            Vector3 AttackSpawnM2 = MidAttackSpawn.position + new Vector3(0, 0, -20);
-            GameObject LineAttack = Instantiate(LineAttackPrefab, AttackSpawnM2, Quaternion.identity);
-            LineAttack.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 7.9f), ForceMode.Impulse);
+            Vector3 AttackSpawnM2 = MidAttackSpawn.position + new Vector3(0, 0, -2);
+            GameObject LineAttack = Instantiate(FastRocketPrefab, AttackSpawnM2, Quaternion.identity);
+           // LineAttack.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 7.9f), ForceMode.Impulse);
 
             yield return new WaitForSeconds(10f);
         }
@@ -337,8 +344,8 @@ public class BossManager : MonoBehaviour
         if (Type == 1)
         {
             Vector3 AttackSpawnR = RightAttackSpawn.position + new Vector3(0, 0, -2);
-            GameObject TallAttack = Instantiate(TallAttackPrefab, AttackSpawnR, Quaternion.identity);
-            TallAttack.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, -10), ForceMode.Impulse);
+            GameObject TallAttack = Instantiate(SlowRocketPrefab, AttackSpawnR, Quaternion.identity);
+           // TallAttack.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, -10), ForceMode.Impulse);
             yield return new WaitForSeconds(1f);
         }
         else if (Type == 2)
@@ -352,11 +359,13 @@ public class BossManager : MonoBehaviour
             yield return new WaitForSeconds(2f);
 
             //Debug.Log("AttackLine");
-            Vector3 AttackSpawnR2 = RightAttackSpawn.position + new Vector3(0, 0, -20);
-            GameObject LineAttack = Instantiate(LineAttackPrefab, AttackSpawnR2, Quaternion.identity);
-            LineAttack.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 7.9f), ForceMode.Impulse);
+            Vector3 AttackSpawnR2 = RightAttackSpawn.position + new Vector3(0, 0, -2);
+            GameObject LineAttack = Instantiate(FastRocketPrefab, AttackSpawnR2, Quaternion.identity);
+            //LineAttack.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 7.9f), ForceMode.Impulse);
 
             yield return new WaitForSeconds(10f);
         }
     }
+
+   
 }

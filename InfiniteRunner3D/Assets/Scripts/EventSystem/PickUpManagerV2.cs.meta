@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 9121dba3eb3e8e34bafb08a7d7351932
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - JumpBuff: {instanceID: 0}
+  - Shield: {instanceID: 0}
+  - pickUpUI: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

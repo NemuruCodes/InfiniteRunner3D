@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6006542399394843114}
   - component: {fileID: -6851334062100283206}
   - component: {fileID: 7179656096172805039}
+  - component: {fileID: 2701915299656045793}
   m_Layer: 0
   m_Name: JumpBuff
   m_TagString: PickUp
@@ -119,7 +120,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4566742192850814780}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62c9f7a01b6a9d74dbd407286fe19d7f, type: 3}
   m_Name: 
@@ -148,6 +149,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e948dd600adeea4e85df00ce890b1bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2701915299656045793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4566742192850814780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f92dac8d8788a4478b0283130221c43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupType: 1
 --- !u!1001 &1060239164798585151
 PrefabInstance:
   m_ObjectHideFlags: 0
