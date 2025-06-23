@@ -17,3 +17,34 @@ Available at: https:https://ambientcg.com/view?id=Metal046B [Accessed 19 May 202
 
 Dungeon Mason . Robot Hero : PBR HP Polyart , Unity Asset Store. [Online]
 Available at: https://assetstore.unity.com/packages/3d/characters/robots/robot-hero-pbr-hp-polyart-106154 [Accessed 19 May 2025].
+
+
+Sound References
+
+Jump & Landing - 
+https://pixabay.com/sound-effects/search/jump%20and%20landing/
+
+Death -
+https://pixabay.com/sound-effects/search/metal%20pipe/
+
+Factory -
+https://pixabay.com/sound-effects/futuristic-factory-machine-ps-024-314835/
+
+Pick Up -
+https://freesound.org/people/GameAudio/sounds/220173/
+
+Shield -
+https://freesound.org/people/unfa/sounds/584173/
+
+Shoot -
+https://freesound.org/people/Karma_Gally/sounds/812781/
+
+Unity Cloud :
+https://www.youtube.com/watch?v=1WWc8tYf900
+
+Unity Settings:https:
+//www.youtube.com/watch?v=YOaYQrN1oYQ
+
+
+
+
