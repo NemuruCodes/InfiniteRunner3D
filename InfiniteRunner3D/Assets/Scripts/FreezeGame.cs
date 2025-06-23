@@ -18,20 +18,35 @@ public class FreezeGame : MonoBehaviour
 
     public Vector3 targetPosition2;
 
-    
+    public PlayerMetrics playerMetrics;
+    public int valueFinal { get; set; }
+    public int BossFinal { get; set; }
+    PointManager pointManager;
+
+
     public void PlayerDeath()
     {
-            
-            EndMenu.SetActive(true);
 
-            TextUI.transform.position = Vector3.Lerp(TextUI.transform.position, targetPosition, speed * 1);
+        EndMenu.SetActive(true);
 
-            BossScore.transform.position = Vector3.Lerp(BossScore.transform.position, targetPosition2, speed * 1);
+        //TextUI.transform.position = Vector3.Lerp(TextUI.transform.position, targetPosition, speed * 1);
 
-            Score.SetActive(false);
-            BossUI.SetActive(false);
+        //BossScore.transform.position = Vector3.Lerp(BossScore.transform.position, targetPosition2, speed * 1);
 
-            Time.timeScale = 0;
+        //Score.SetActive(false);
+        //BossUI.SetActive(false);
+
+        // Time.timeScale = 0;
+        //SoundManager.StopLoopingSound(SoundType.FACTORY);
+
+       // pointManager.PlayerDeathCount();
+        playerMetrics.LogIn();
+        playerMetrics.Add(PointManager.Instance.value, PointManager.Instance.value, PointManager.Instance.bossesDefeated);
+
+        //playerMetrics.Add(pointManager.value, pointManager.value, pointManager.bossesDefeated);
+        playerMetrics.LogIn();
+
+        Time.timeScale = 0;
         SoundManager.StopLoopingSound(SoundType.FACTORY);
 
     }

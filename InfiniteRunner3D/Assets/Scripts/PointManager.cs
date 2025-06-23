@@ -22,6 +22,8 @@ public class PointManager : MonoBehaviour
     //public event Action OnBossDefeated;
     //public event Action OnBossSpawned;
     int Level = 1;
+    //PlayerController playerControler;
+    FreezeGame freezeGame;
 
     private void Awake()
     {
@@ -90,7 +92,7 @@ public class PointManager : MonoBehaviour
             nextLevel = false;
         }
 
-       
+        
 
     }
     
@@ -104,6 +106,12 @@ public class PointManager : MonoBehaviour
         
         nextLevel = true;
     }
+
+    //public void PlayerDeathCount()
+    //{
+    //    freezeGame.valueFinal = value;
+     //   freezeGame.BossFinal = bossesDefeated;
+    //}
 
     /*
     private void Update()

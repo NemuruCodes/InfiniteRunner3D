@@ -46,6 +46,13 @@ public class PlayerController : MonoBehaviour
 
     public FreezeGame freezeGame;
 
+    [SerializeField] private GameObject PauseMenu;
+
+    public PlayerMetrics playerMetrics;
+    public int valueFinal { get; set; }
+    public int BossFinal { get; set; }
+    PointManager pointManager;
+
     void Start()
     {
 
@@ -201,7 +208,6 @@ public class PlayerController : MonoBehaviour
             isAlive = false;
             playerSpeed = 0;
             StartCoroutine(deathRoutine());
-
         }
     }
 
@@ -212,4 +218,15 @@ public class PlayerController : MonoBehaviour
 
         freezeGame.PlayerDeath();
     }
+
+    /*public void PlayerDeath()
+    {
+        PauseMenu.SetActive(true);
+        playerMetrics.LogIn();
+        playerMetrics.Add(valueFinal, valueFinal, BossFinal);
+        playerMetrics.LogIn();
+
+        Time.timeScale = 0;
+        SoundManager.StopLoopingSound(SoundType.FACTORY);
+    }*/
 }
