@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadSceneAsync(2);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
         Time.timeScale = 1;
+        PlayerController.isAlive = true;
     }
 
     public void Quit()
