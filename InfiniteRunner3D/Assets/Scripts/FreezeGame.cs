@@ -19,9 +19,13 @@ public class FreezeGame : MonoBehaviour
     public Vector3 targetPosition2;
 
     public PlayerMetrics playerMetrics;
+
+   // public AccountManager accountManager;
     public int valueFinal { get; set; }
     public int BossFinal { get; set; }
     PointManager pointManager;
+
+    [SerializeField] private AccountDisplay accountDisplay;
 
 
     public void PlayerDeath()
@@ -40,11 +44,21 @@ public class FreezeGame : MonoBehaviour
         //SoundManager.StopLoopingSound(SoundType.FACTORY);
 
        // pointManager.PlayerDeathCount();
-        playerMetrics.LogIn();
-        playerMetrics.Add(PointManager.Instance.value, PointManager.Instance.value, PointManager.Instance.bossesDefeated);
+        //playerMetrics.LogIn();
+        //playerMetrics.Add(PointManager.Instance.value, PointManager.Instance.value, PointManager.Instance.bossesDefeated);
+
+        AccountManager.Instance.AddHighScore(PointManager.Instance.value);
+        AccountManager.Instance.AddOverallScore(PointManager.Instance.value);
+        AccountManager.Instance.AddBossBeaten(PointManager.Instance.bossesDefeated);
+
 
         //playerMetrics.Add(pointManager.value, pointManager.value, pointManager.bossesDefeated);
-        playerMetrics.LogIn();
+        //playerMetrics.LogIn();
+
+        if (accountDisplay != null)
+        {
+            accountDisplay.UpdateAccountUI(AccountManager.Instance.currentAccount);
+        }
 
         Time.timeScale = 0;
         SoundManager.StopLoopingSound(SoundType.FACTORY);
