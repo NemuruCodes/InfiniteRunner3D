@@ -32,14 +32,19 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("MainMenu script initialized");
 
-        if (AccountManager.Instance != null && AccountManager.Instance.currentAccount != null)
+        if (AccountManager.Instance != null)
         {
-            ShowMainMenu();
-            ShowAccountUI();
-        }
-        else
-        {
-            ShowLoginPanel();
+            AccountManager.Instance.ui = this;
+
+            if (AccountManager.Instance != null && AccountManager.Instance.currentAccount != null)
+            {
+                ShowMainMenu();
+                ShowAccountUI();
+            }
+            else
+            {
+                ShowLoginPanel();
+            }
         }
     }
 
