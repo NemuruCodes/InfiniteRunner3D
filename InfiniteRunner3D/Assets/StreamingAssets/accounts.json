@@ -8,26 +8,14 @@
         },
         {
             "name": "Kaellum",
-            "highScore": "166",
-            "overallScore": "176",
+            "highScore": "2",
+            "overallScore": "2",
             "bossesBeaten": "2"
         },
         {
             "name": "Test1",
             "highScore": "0",
             "overallScore": "0",
-            "bossesBeaten": "0"
-        },
-        {
-            "name": "kaellum",
-            "highScore": "0",
-            "overallScore": "0",
-            "bossesBeaten": "0"
-        },
-        {
-            "name": "Goat",
-            "highScore": "28",
-            "overallScore": "28",
             "bossesBeaten": "0"
         }
     ]
